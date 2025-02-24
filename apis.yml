@@ -15,49 +15,62 @@ apis:
       well help you develop best-in-class digital banking solutions. 
   - aid: chase:account-and-customer-information-api
     name: Account and Customer Information API
-    description: 'null'
-    humanURL: https://developer.chase.com/products/aggregation-fdx/
     tags: []
+    humanURL: https://developer.chase.com/products/aggregation-fdx/
     properties: []
+    description: 'null'
   - aid: chase:account-aggregation-user-consent-api
     name: Account Aggregation User Consent API
-    description: 'null'
-    humanURL: https://developer.chase.com/products/aggregation-consent/
     tags: []
+    humanURL: https://developer.chase.com/products/aggregation-consent/
     properties: []
+    description: 'null'
   - aid: chase:loyalty-pay-with-points-order-service-api
     name: Loyalty Pay with Points Order Service API
-    description: 'null'
+    tags: []
     humanURL: >-
       https://developer.chase.com/products/loyalty-pay-with-points-order-service/
-    tags: []
     properties: []
+    description: 'null'
   - aid: chase:rewards-balance-api
     name: Rewards Balance API
-    description: 'null'
-    humanURL: https://developer.chase.com/products/rewards-balance-api/
     tags: []
+    humanURL: https://developer.chase.com/products/rewards-balance-api/
     properties: []
+    description: 'null'
   - aid: chase:loyalty-pci-merchant-relationship-manager-api
     name: Loyalty PCI Merchant Relationship Manager API
-    description: 'null'
+    tags: []
     humanURL: >-
       https://developer.chase.com/products/loyalty-pci-merchant-relation-manager/
-    tags: []
     properties: []
+    description: 'null'
   - aid: chase:loyalty-pay-with-points-enrollment-service-api
     name: Loyalty Pay with Points Enrollment Service API
-    description: 'null'
+    tags: []
     humanURL: >-
       https://developer.chase.com/products/loyalty-pay-with-points-enrollment-service/
-    tags: []
     properties: []
+    description: 'null'
 name: Chase
 tags:
   - Credit Cards
 type: Index
 image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
 access: 3rd-Party
+common:
+  - url: https://developer.chase.com/support/faqs
+    name: FAQ | Chase Developer
+    type: FAQ
+    description: 'null'
+  - url: https://developer.chase.com/support/glossary/
+    name: Glossary | Chase Developer
+    type: Glossary
+    description: 'null'
+  - name: Chase Developer
+    description: 'null'
+    url: https://developer.chase.com/
+    type: Portal
 created: '2025-02-21'
 modified: '2025-02-24'
 position: Consumer
@@ -68,12 +81,3 @@ maintainers:
   - FN: Kin Lane
     email: info@apievangelist.com
 specificationVersion: '0.19'
-common:
-  - name: FAQ | Chase Developer
-    description: 'null'
-    url: https://developer.chase.com/support/faqs
-    type: FAQ
-  - name: Glossary | Chase Developer
-    description: 'null'
-    url: https://developer.chase.com/support/glossary/
-    type: Glossary
