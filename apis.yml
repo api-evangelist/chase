@@ -1,31 +1,79 @@
 aid: chase
-name: Chase
-description: >-
-  With our established expertise across a vast range of financial services, well
-  help you develop best-in-class digital banking solutions. 
-type: Index
-position: Consumer
-access: 3rd-Party
-image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
-tags:
-  - API
-created: '2025-02-21'
-modified: '2025-02-21'
 url: >-
   https://raw.githubusercontent.com/api-evangelist/chase/refs/heads/main/apis.yml
-specificationVersion: '0.19'
 apis:
   - aid: chase:chase
     name: Chase
+    tags:
+      - API
+    humanURL: ' https://developer.chase.com/'
+    properties:
+      - url: ' https://developer.chase.com/'
+        type: Documentation
     description: >-
       With our established expertise across a vast range of financial services,
       well help you develop best-in-class digital banking solutions. 
-    humanURL: ' https://developer.chase.com/'
-    tags:
-      - API
-    properties:
-      - type: Documentation
-        url: ' https://developer.chase.com/'
+  - aid: chase:account-and-customer-information-api
+    name: Account and Customer Information API
+    description: 'null'
+    humanURL: https://developer.chase.com/products/aggregation-fdx/
+    tags: []
+    properties: []
+  - aid: chase:account-aggregation-user-consent-api
+    name: Account Aggregation User Consent API
+    description: 'null'
+    humanURL: https://developer.chase.com/products/aggregation-consent/
+    tags: []
+    properties: []
+  - aid: chase:loyalty-pay-with-points-order-service-api
+    name: Loyalty Pay with Points Order Service API
+    description: 'null'
+    humanURL: >-
+      https://developer.chase.com/products/loyalty-pay-with-points-order-service/
+    tags: []
+    properties: []
+  - aid: chase:rewards-balance-api
+    name: Rewards Balance API
+    description: 'null'
+    humanURL: https://developer.chase.com/products/rewards-balance-api/
+    tags: []
+    properties: []
+  - aid: chase:loyalty-pci-merchant-relationship-manager-api
+    name: Loyalty PCI Merchant Relationship Manager API
+    description: 'null'
+    humanURL: >-
+      https://developer.chase.com/products/loyalty-pci-merchant-relation-manager/
+    tags: []
+    properties: []
+  - aid: chase:loyalty-pay-with-points-enrollment-service-api
+    name: Loyalty Pay with Points Enrollment Service API
+    description: 'null'
+    humanURL: >-
+      https://developer.chase.com/products/loyalty-pay-with-points-enrollment-service/
+    tags: []
+    properties: []
+name: Chase
+tags:
+  - Credit Cards
+type: Index
+image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+access: 3rd-Party
+created: '2025-02-21'
+modified: '2025-02-24'
+position: Consumer
+description: >-
+  With our established expertise across a vast range of financial services, well
+  help you develop best-in-class digital banking solutions. 
 maintainers:
   - FN: Kin Lane
     email: info@apievangelist.com
+specificationVersion: '0.19'
+common:
+  - name: FAQ | Chase Developer
+    description: 'null'
+    url: https://developer.chase.com/support/faqs
+    type: FAQ
+  - name: Glossary | Chase Developer
+    description: 'null'
+    url: https://developer.chase.com/support/glossary/
+    type: Glossary
