@@ -2,17 +2,6 @@ aid: chase
 url: >-
   https://raw.githubusercontent.com/api-evangelist/chase/refs/heads/main/apis.yml
 apis:
-  - aid: chase:chase
-    name: Chase
-    tags:
-      - API
-    humanURL: ' https://developer.chase.com/'
-    properties:
-      - url: ' https://developer.chase.com/'
-        type: Documentation
-    description: >-
-      With our established expertise across a vast range of financial services,
-      well help you develop best-in-class digital banking solutions. 
   - aid: chase:account-and-customer-information-api
     name: Account and Customer Information API
     tags: []
