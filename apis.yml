@@ -51,8 +51,7 @@ apis:
     tags: []
     humanURL: https://developer.chase.com/products/rewards-balance-api/
     properties:
-      - url: 
-          https://developer.chase.com/products/rewards-balance-api/specification
+      - url: https://developer.chase.com/products/rewards-balance-api/specification
         type: Documentation
     description: >-
       The Rewards Balance API is a tool that allows businesses to easily access and
@@ -92,8 +91,8 @@ apis:
       view available rewards, and even automatically apply points to discounted purchases.
 name: Chase
 tags:
-  - Credit Cards
   - Banking
+  - Credit Cards
 type: Index
 image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
 access: 3rd-Party
