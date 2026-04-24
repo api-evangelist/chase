@@ -1,0 +1,39 @@
+extends:
+  - spectral:oas
+rules:
+  chase-https-only:
+    description: Chase APIs must use HTTPS.
+    severity: error
+    given: $.servers[*].url
+    then:
+      function: pattern
+      functionOptions:
+        match: '^https://'
+  chase-info-contact:
+    description: Definitions must declare contact information.
+    severity: error
+    given: $.info
+    then:
+      field: contact
+      function: truthy
+  chase-oauth2-required:
+    description: All Chase APIs must declare OAuth 2.0 security.
+    severity: error
+    given: $.components.securitySchemes
+    then:
+      field: oauth2
+      function: truthy
+  chase-fdx-tagging:
+    description: FDX-aligned operations should declare an Accounts/Transactions/Consents tag.
+    severity: warn
+    given: $.paths[*][get,post,put,delete,patch]
+    then:
+      field: tags
+      function: truthy
+  chase-pci-tokenization:
+    description: Card data must be referenced as a tokenized cardToken (no PANs).
+    severity: warn
+    given: $..properties
+    then:
+      field: cardNumber
+      function: falsy

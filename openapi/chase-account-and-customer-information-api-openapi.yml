@@ -1,0 +1,122 @@
+openapi: 3.1.0
+info:
+  title: Chase Account and Customer Information API
+  description: >-
+    FDX-aligned API for retrieving Chase customer account information,
+    balances, transactions, statements, and tax forms with explicit
+    customer consent.
+  version: '5.2'
+  contact:
+    name: Chase Developer Support
+    url: https://developer.chase.com/support
+externalDocs:
+  description: Account and Customer Information API Guide
+  url: https://developer.chase.com/products/aggregation-fdx/guides/using-the-account-and-customer-information-api/
+servers:
+  - url: https://api.chase.com/aggregation/fdx
+    description: Chase FDX Aggregation Production
+tags:
+  - name: Accounts
+  - name: Transactions
+  - name: Statements
+  - name: Tax Forms
+  - name: Customers
+security:
+  - oauth2: []
+paths:
+  /accounts:
+    get:
+      operationId: listAccounts
+      summary: List accessible accounts
+      tags: [Accounts]
+      responses:
+        '200':
+          description: Accounts list
+  /accounts/{accountId}:
+    get:
+      operationId: getAccount
+      summary: Get account details
+      tags: [Accounts]
+      parameters:
+        - name: accountId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Account details
+  /accounts/{accountId}/transactions:
+    get:
+      operationId: listAccountTransactions
+      summary: List account transactions
+      tags: [Transactions]
+      parameters:
+        - name: accountId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: startTime
+          in: query
+          schema:
+            type: string
+            format: date-time
+        - name: endTime
+          in: query
+          schema:
+            type: string
+            format: date-time
+      responses:
+        '200':
+          description: Transactions list
+  /accounts/{accountId}/statements:
+    get:
+      operationId: listStatements
+      summary: List account statements
+      tags: [Statements]
+      parameters:
+        - name: accountId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Statements list
+  /accounts/{accountId}/tax-forms:
+    get:
+      operationId: listTaxForms
+      summary: List tax forms for an account
+      tags: [Tax Forms]
+      parameters:
+        - name: accountId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Tax forms list
+  /customers/current:
+    get:
+      operationId: getCurrentCustomer
+      summary: Get the current authenticated customer
+      tags: [Customers]
+      responses:
+        '200':
+          description: Customer profile
+components:
+  securitySchemes:
+    oauth2:
+      type: oauth2
+      flows:
+        authorizationCode:
+          authorizationUrl: https://api.chase.com/oauth2/authorize
+          tokenUrl: https://api.chase.com/oauth2/token
+          scopes:
+            accounts.read: Read account data
+            transactions.read: Read transactions
+            statements.read: Read statements
+            tax-forms.read: Read tax forms
+            customers.read: Read customer profile

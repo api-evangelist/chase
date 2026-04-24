@@ -1,0 +1,94 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "chase": "https://developer.chase.com/schemas/",
+    "fdx": "https://api.fdx.org/schemas/",
+    "schema": "https://schema.org/",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "dcterms": "http://purl.org/dc/terms/",
+
+    "Account": {
+      "@id": "fdx:Account",
+      "@context": {
+        "accountId": "fdx:accountId",
+        "accountType": "fdx:accountType",
+        "accountCategory": "fdx:accountCategory",
+        "displayName": "schema:name",
+        "currency": "schema:currency",
+        "currentBalance": {
+          "@id": "fdx:currentBalance",
+          "@type": "xsd:decimal"
+        },
+        "availableBalance": {
+          "@id": "fdx:availableBalance",
+          "@type": "xsd:decimal"
+        }
+      }
+    },
+
+    "Transaction": {
+      "@id": "fdx:Transaction",
+      "@context": {
+        "transactionId": "fdx:transactionId",
+        "amount": {
+          "@id": "fdx:amount",
+          "@type": "xsd:decimal"
+        },
+        "description": "schema:description",
+        "postedTimestamp": {
+          "@id": "fdx:postedTimestamp",
+          "@type": "xsd:dateTime"
+        },
+        "transactionTimestamp": {
+          "@id": "fdx:transactionTimestamp",
+          "@type": "xsd:dateTime"
+        }
+      }
+    },
+
+    "Consent": {
+      "@id": "fdx:Consent",
+      "@context": {
+        "consentId": "fdx:consentId",
+        "permissions": "fdx:permissions",
+        "status": "fdx:consentStatus",
+        "expirationTime": {
+          "@id": "fdx:expirationTime",
+          "@type": "xsd:dateTime"
+        }
+      }
+    },
+
+    "RewardsBalance": {
+      "@id": "chase:RewardsBalance",
+      "@context": {
+        "cardToken": "chase:cardToken",
+        "pointsBalance": {
+          "@id": "chase:pointsBalance",
+          "@type": "xsd:integer"
+        },
+        "cashValue": {
+          "@id": "chase:cashValue",
+          "@type": "xsd:decimal"
+        }
+      }
+    },
+
+    "PayWithPointsOrder": {
+      "@id": "chase:PayWithPointsOrder",
+      "@context": {
+        "orderId": "chase:orderId",
+        "merchantId": "chase:merchantId",
+        "amount": {
+          "@id": "chase:amount",
+          "@type": "xsd:decimal"
+        },
+        "pointsToRedeem": {
+          "@id": "chase:pointsToRedeem",
+          "@type": "xsd:integer"
+        },
+        "status": "chase:orderStatus"
+      }
+    }
+  }
+}

@@ -1,0 +1,77 @@
+openapi: 3.1.0
+info:
+  title: Chase Loyalty Pay with Points Enrollment Service API
+  description: >-
+    Enrollment service that registers customer payment cards in the Chase
+    Pay with Points program so points can be redeemed against future
+    purchases.
+  version: '1.0'
+  contact:
+    name: Chase Developer Support
+    url: https://developer.chase.com/support
+servers:
+  - url: https://api.chase.com/loyalty/pay-with-points/enrollment
+    description: Pay with Points Enrollment Production
+tags:
+  - name: Enrollments
+security:
+  - oauth2: []
+paths:
+  /enrollments:
+    post:
+      operationId: createEnrollment
+      summary: Enroll a card in Pay with Points
+      tags: [Enrollments]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [cardToken, merchantId]
+              properties:
+                cardToken:
+                  type: string
+                merchantId:
+                  type: string
+                customerId:
+                  type: string
+      responses:
+        '201':
+          description: Enrollment created
+  /enrollments/{enrollmentId}:
+    get:
+      operationId: getEnrollment
+      summary: Get an enrollment record
+      tags: [Enrollments]
+      parameters:
+        - name: enrollmentId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Enrollment
+    delete:
+      operationId: revokeEnrollment
+      summary: Revoke a Pay with Points enrollment
+      tags: [Enrollments]
+      parameters:
+        - name: enrollmentId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '204':
+          description: Enrollment revoked
+components:
+  securitySchemes:
+    oauth2:
+      type: oauth2
+      flows:
+        clientCredentials:
+          tokenUrl: https://api.chase.com/oauth2/token
+          scopes:
+            enrollments.write: Manage enrollments

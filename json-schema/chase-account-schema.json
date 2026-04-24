@@ -1,0 +1,18 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://developer.chase.com/schemas/account.json",
+  "title": "Chase FDX Account",
+  "type": "object",
+  "required": ["accountId", "accountType"],
+  "properties": {
+    "accountId": { "type": "string" },
+    "accountType": { "type": "string" },
+    "accountCategory": { "type": "string" },
+    "displayName": { "type": "string" },
+    "currency": { "type": "string" },
+    "currentBalance": { "type": "number" },
+    "availableBalance": { "type": "number" },
+    "accountNumberDisplay": { "type": "string" },
+    "status": { "type": "string" }
+  }
+}

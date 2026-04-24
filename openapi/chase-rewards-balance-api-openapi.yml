@@ -1,0 +1,64 @@
+openapi: 3.1.0
+info:
+  title: Chase Rewards Balance API
+  description: >-
+    Retrieves a Chase cardholder's current Ultimate Rewards points
+    balance for use in loyalty experiences and Pay with Points checkouts.
+  version: '1.0'
+  contact:
+    name: Chase Developer Support
+    url: https://developer.chase.com/support
+externalDocs:
+  description: Rewards Balance API Specification
+  url: https://developer.chase.com/products/rewards-balance-api/specification
+servers:
+  - url: https://api.chase.com/loyalty/rewards-balance
+    description: Chase Loyalty Production
+tags:
+  - name: Rewards Balance
+security:
+  - oauth2: []
+paths:
+  /balances:
+    post:
+      operationId: getRewardsBalance
+      summary: Retrieve a rewards balance for a tokenized card
+      tags: [Rewards Balance]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [cardToken]
+              properties:
+                cardToken:
+                  type: string
+                  description: PCI-compliant card token issued by Chase.
+                merchantId:
+                  type: string
+      responses:
+        '200':
+          description: Rewards balance
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  cardToken:
+                    type: string
+                  pointsBalance:
+                    type: integer
+                  cashValue:
+                    type: number
+                  currency:
+                    type: string
+components:
+  securitySchemes:
+    oauth2:
+      type: oauth2
+      flows:
+        clientCredentials:
+          tokenUrl: https://api.chase.com/oauth2/token
+          scopes:
+            rewards.read: Read rewards balances

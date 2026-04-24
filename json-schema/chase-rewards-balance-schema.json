@@ -1,0 +1,13 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://developer.chase.com/schemas/rewards-balance.json",
+  "title": "Chase Rewards Balance",
+  "type": "object",
+  "required": ["cardToken", "pointsBalance"],
+  "properties": {
+    "cardToken": { "type": "string" },
+    "pointsBalance": { "type": "integer" },
+    "cashValue": { "type": "number" },
+    "currency": { "type": "string" }
+  }
+}
