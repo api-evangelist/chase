@@ -1,0 +1,182 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Chase Account Aggregation User Consent API
+  description: Consent management API for the Chase FDX aggregation platform. Supports requesting, retrieving, updating, and
+    revoking user consent for sharing account data with authorized data recipients.
+  tags:
+  - Chase
+  - API
+  created: '2026-05-06'
+  modified: '2026-05-06'
+capability:
+  consumes:
+  - type: http
+    namespace: chase
+    baseUri: https://api.chase.com/aggregation/consent
+    description: Chase Account Aggregation User Consent API HTTP API.
+    authentication:
+      type: bearer
+      token: '{{CHASE_TOKEN}}'
+    resources:
+    - name: consents
+      path: /consents
+      operations:
+      - name: createconsent
+        method: POST
+        description: Create a consent request
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: listconsents
+        method: GET
+        description: List consents
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: consents-consentid
+      path: /consents/{consentId}
+      operations:
+      - name: getconsent
+        method: GET
+        description: Get a consent record
+        inputParameters:
+        - name: consentId
+          in: path
+          type: string
+          required: true
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: revokeconsent
+        method: DELETE
+        description: Revoke a consent
+        inputParameters:
+        - name: consentId
+          in: path
+          type: string
+          required: true
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+  exposes:
+  - type: rest
+    port: 8080
+    namespace: chase-rest
+    description: REST adapter for Chase Account Aggregation User Consent API.
+    resources:
+    - path: /consents
+      name: createconsent
+      operations:
+      - method: POST
+        name: createconsent
+        description: Create a consent request
+        call: chase.createconsent
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /consents
+      name: listconsents
+      operations:
+      - method: GET
+        name: listconsents
+        description: List consents
+        call: chase.listconsents
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /consents/{consentId}
+      name: getconsent
+      operations:
+      - method: GET
+        name: getconsent
+        description: Get a consent record
+        call: chase.getconsent
+        with:
+          consentId: rest.consentId
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /consents/{consentId}
+      name: revokeconsent
+      operations:
+      - method: DELETE
+        name: revokeconsent
+        description: Revoke a consent
+        call: chase.revokeconsent
+        with:
+          consentId: rest.consentId
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    port: 9090
+    namespace: chase-mcp
+    transport: http
+    description: MCP adapter for Chase Account Aggregation User Consent API for AI agent use.
+    tools:
+    - name: createconsent
+      description: Create a consent request
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: chase.createconsent
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: listconsents
+      description: List consents
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: chase.listconsents
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: getconsent
+      description: Get a consent record
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: chase.getconsent
+      with:
+        consentId: tools.consentId
+      inputParameters:
+      - name: consentId
+        type: string
+        description: consentId
+        required: true
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: revokeconsent
+      description: Revoke a consent
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: chase.revokeconsent
+      with:
+        consentId: tools.consentId
+      inputParameters:
+      - name: consentId
+        type: string
+        description: consentId
+        required: true
+      outputParameters:
+      - type: object
+        mapping: $.
+binds:
+- namespace: env
+  keys:
+    CHASE_TOKEN: CHASE_TOKEN
