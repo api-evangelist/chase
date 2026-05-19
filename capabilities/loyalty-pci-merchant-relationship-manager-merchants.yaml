@@ -1,0 +1,188 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Chase Loyalty PCI Merchant Relationship Manager API — Merchants
+  description: 'Chase Loyalty PCI Merchant Relationship Manager API — Merchants. 4 operations. Lead operation: Onboard a new
+    merchant. Self-contained Naftiko capability covering one Chase business surface.'
+  tags:
+  - Chase
+  - Merchants
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    CHASE_API_KEY: CHASE_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: loyalty-pci-merchant-relationship-manager-merchants
+    baseUri: https://api.chase.com/loyalty/merchant-relationship-manager
+    description: Chase Loyalty PCI Merchant Relationship Manager API — Merchants business capability. Self-contained, no shared
+      references.
+    resources:
+    - name: merchants
+      path: /merchants
+      operations:
+      - name: createmerchant
+        method: POST
+        description: Onboard a new merchant
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+      - name: listmerchants
+        method: GET
+        description: List merchants
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: merchants-merchantId
+      path: /merchants/{merchantId}
+      operations:
+      - name: getmerchant
+        method: GET
+        description: Get merchant details
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: merchantId
+          in: path
+          type: string
+          required: true
+      - name: updatemerchant
+        method: PUT
+        description: Update merchant details
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: merchantId
+          in: path
+          type: string
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    authentication:
+      type: bearer
+      token: '{{env.CHASE_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: loyalty-pci-merchant-relationship-manager-merchants-rest
+    port: 8080
+    description: REST adapter for Chase Loyalty PCI Merchant Relationship Manager API — Merchants. One Spectral-compliant
+      resource per consumed operation, prefixed with /v1.
+    resources:
+    - path: /v1/merchants
+      name: merchants
+      description: REST surface for merchants.
+      operations:
+      - method: POST
+        name: createmerchant
+        description: Onboard a new merchant
+        call: loyalty-pci-merchant-relationship-manager-merchants.createmerchant
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: GET
+        name: listmerchants
+        description: List merchants
+        call: loyalty-pci-merchant-relationship-manager-merchants.listmerchants
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/merchants/{merchantid}
+      name: merchants-merchantid
+      description: REST surface for merchants-merchantId.
+      operations:
+      - method: GET
+        name: getmerchant
+        description: Get merchant details
+        call: loyalty-pci-merchant-relationship-manager-merchants.getmerchant
+        with:
+          merchantId: rest.merchantId
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PUT
+        name: updatemerchant
+        description: Update merchant details
+        call: loyalty-pci-merchant-relationship-manager-merchants.updatemerchant
+        with:
+          merchantId: rest.merchantId
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: loyalty-pci-merchant-relationship-manager-merchants-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Chase Loyalty PCI Merchant Relationship Manager API — Merchants. One tool per consumed operation,
+      routed inline through this capability's consumes block.
+    tools:
+    - name: onboard-new-merchant
+      description: Onboard a new merchant
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: loyalty-pci-merchant-relationship-manager-merchants.createmerchant
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: list-merchants
+      description: List merchants
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: loyalty-pci-merchant-relationship-manager-merchants.listmerchants
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-merchant-details
+      description: Get merchant details
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: loyalty-pci-merchant-relationship-manager-merchants.getmerchant
+      with:
+        merchantId: tools.merchantId
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: update-merchant-details
+      description: Update merchant details
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: loyalty-pci-merchant-relationship-manager-merchants.updatemerchant
+      with:
+        merchantId: tools.merchantId
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.

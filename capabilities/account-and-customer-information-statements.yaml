@@ -1,0 +1,79 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Chase Account and Customer Information API — Statements
+  description: 'Chase Account and Customer Information API — Statements. 1 operations. Lead operation: List account statements.
+    Self-contained Naftiko capability covering one Chase business surface.'
+  tags:
+  - Chase
+  - Statements
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    CHASE_API_KEY: CHASE_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: account-and-customer-information-statements
+    baseUri: https://api.chase.com/aggregation/fdx
+    description: Chase Account and Customer Information API — Statements business capability. Self-contained, no shared references.
+    resources:
+    - name: accounts-accountId-statements
+      path: /accounts/{accountId}/statements
+      operations:
+      - name: liststatements
+        method: GET
+        description: List account statements
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: accountId
+          in: path
+          type: string
+          required: true
+    authentication:
+      type: bearer
+      token: '{{env.CHASE_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: account-and-customer-information-statements-rest
+    port: 8080
+    description: REST adapter for Chase Account and Customer Information API — Statements. One Spectral-compliant resource
+      per consumed operation, prefixed with /v1.
+    resources:
+    - path: /v1/accounts/{accountid}/statements
+      name: accounts-accountid-statements
+      description: REST surface for accounts-accountId-statements.
+      operations:
+      - method: GET
+        name: liststatements
+        description: List account statements
+        call: account-and-customer-information-statements.liststatements
+        with:
+          accountId: rest.accountId
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: account-and-customer-information-statements-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Chase Account and Customer Information API — Statements. One tool per consumed operation,
+      routed inline through this capability's consumes block.
+    tools:
+    - name: list-account-statements
+      description: List account statements
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: account-and-customer-information-statements.liststatements
+      with:
+        accountId: tools.accountId
+      outputParameters:
+      - type: object
+        mapping: $.

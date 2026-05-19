@@ -1,0 +1,79 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Chase Account and Customer Information API — Tax Forms
+  description: 'Chase Account and Customer Information API — Tax Forms. 1 operations. Lead operation: List tax forms for an
+    account. Self-contained Naftiko capability covering one Chase business surface.'
+  tags:
+  - Chase
+  - Tax Forms
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    CHASE_API_KEY: CHASE_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: account-and-customer-information-tax-forms
+    baseUri: https://api.chase.com/aggregation/fdx
+    description: Chase Account and Customer Information API — Tax Forms business capability. Self-contained, no shared references.
+    resources:
+    - name: accounts-accountId-tax-forms
+      path: /accounts/{accountId}/tax-forms
+      operations:
+      - name: listtaxforms
+        method: GET
+        description: List tax forms for an account
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: accountId
+          in: path
+          type: string
+          required: true
+    authentication:
+      type: bearer
+      token: '{{env.CHASE_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: account-and-customer-information-tax-forms-rest
+    port: 8080
+    description: REST adapter for Chase Account and Customer Information API — Tax Forms. One Spectral-compliant resource
+      per consumed operation, prefixed with /v1.
+    resources:
+    - path: /v1/accounts/{accountid}/tax-forms
+      name: accounts-accountid-tax-forms
+      description: REST surface for accounts-accountId-tax-forms.
+      operations:
+      - method: GET
+        name: listtaxforms
+        description: List tax forms for an account
+        call: account-and-customer-information-tax-forms.listtaxforms
+        with:
+          accountId: rest.accountId
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: account-and-customer-information-tax-forms-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Chase Account and Customer Information API — Tax Forms. One tool per consumed operation,
+      routed inline through this capability's consumes block.
+    tools:
+    - name: list-tax-forms-account
+      description: List tax forms for an account
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: account-and-customer-information-tax-forms.listtaxforms
+      with:
+        accountId: tools.accountId
+      outputParameters:
+      - type: object
+        mapping: $.
