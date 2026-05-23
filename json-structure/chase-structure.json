@@ -1,0 +1,65 @@
+{
+  "provider": "Chase",
+  "providerId": "chase",
+  "kind": "json-structure",
+  "description": "Structural overview of the Chase API surface; extracted from openapi/.",
+  "schemaCount": 0,
+  "operationCount": 6,
+  "schemas": [],
+  "operations": [
+    {
+      "method": "GET",
+      "path": "/accounts",
+      "operationId": "listAccounts",
+      "summary": "List accessible accounts",
+      "tags": [
+        "Accounts"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/accounts/{accountId}",
+      "operationId": "getAccount",
+      "summary": "Get account details",
+      "tags": [
+        "Accounts"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/accounts/{accountId}/transactions",
+      "operationId": "listAccountTransactions",
+      "summary": "List account transactions",
+      "tags": [
+        "Transactions"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/accounts/{accountId}/statements",
+      "operationId": "listStatements",
+      "summary": "List account statements",
+      "tags": [
+        "Statements"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/accounts/{accountId}/tax-forms",
+      "operationId": "listTaxForms",
+      "summary": "List tax forms for an account",
+      "tags": [
+        "Tax Forms"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/customers/current",
+      "operationId": "getCurrentCustomer",
+      "summary": "Get the current authenticated customer",
+      "tags": [
+        "Customers"
+      ]
+    }
+  ]
+}

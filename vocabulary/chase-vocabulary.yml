@@ -1,0 +1,10 @@
+name: Chase Domain Vocabulary
+provider: Chase
+providerId: chase
+description: Tag-derived vocabulary for the Chase API surface; sourced from openapi/ tags.
+terms:
+- term: Accounts
+- term: Transactions
+- term: Statements
+- term: Tax Forms
+- term: Customers
