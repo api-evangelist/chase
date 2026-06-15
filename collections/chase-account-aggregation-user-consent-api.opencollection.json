@@ -1,0 +1,92 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Chase Account Aggregation User Consent API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "oauth2",
+      "flow": "authorization_code",
+      "authorizationUrl": "https://api.chase.com/oauth2/authorize",
+      "accessTokenUrl": "https://api.chase.com/oauth2/token",
+      "credentials": {
+        "clientId": "{{clientId}}",
+        "clientSecret": "{{clientSecret}}"
+      }
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Consents",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List consents",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.chase.com/aggregation/consent/consents"
+          },
+          "docs": "List consents"
+        },
+        {
+          "info": {
+            "name": "Create a consent request",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.chase.com/aggregation/consent/consents",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a consent request"
+        },
+        {
+          "info": {
+            "name": "Get a consent record",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.chase.com/aggregation/consent/consents/:consentId",
+            "params": [
+              {
+                "name": "consentId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get a consent record"
+        },
+        {
+          "info": {
+            "name": "Revoke a consent",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.chase.com/aggregation/consent/consents/:consentId",
+            "params": [
+              {
+                "name": "consentId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Revoke a consent"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

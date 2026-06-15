@@ -1,0 +1,128 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Chase Loyalty Pay with Points Order Service API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "oauth2",
+      "flow": "client_credentials",
+      "accessTokenUrl": "https://api.chase.com/oauth2/token",
+      "credentials": {
+        "clientId": "{{clientId}}",
+        "clientSecret": "{{clientSecret}}"
+      }
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Orders",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Create a Pay with Points order",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.chase.com/loyalty/pay-with-points/orders/orders",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a Pay with Points order"
+        },
+        {
+          "info": {
+            "name": "Get a Pay with Points order",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.chase.com/loyalty/pay-with-points/orders/orders/:orderId",
+            "params": [
+              {
+                "name": "orderId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get a Pay with Points order"
+        },
+        {
+          "info": {
+            "name": "Capture a Pay with Points order",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.chase.com/loyalty/pay-with-points/orders/orders/:orderId/capture",
+            "params": [
+              {
+                "name": "orderId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Capture a Pay with Points order"
+        },
+        {
+          "info": {
+            "name": "Reverse a Pay with Points order",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.chase.com/loyalty/pay-with-points/orders/orders/:orderId/reverse",
+            "params": [
+              {
+                "name": "orderId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Reverse a Pay with Points order"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Refunds",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Refund a Pay with Points order",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.chase.com/loyalty/pay-with-points/orders/orders/:orderId/refunds",
+            "params": [
+              {
+                "name": "orderId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Refund a Pay with Points order"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

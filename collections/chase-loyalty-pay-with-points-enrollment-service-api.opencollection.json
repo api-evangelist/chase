@@ -1,0 +1,80 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Chase Loyalty Pay with Points Enrollment Service API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "oauth2",
+      "flow": "client_credentials",
+      "accessTokenUrl": "https://api.chase.com/oauth2/token",
+      "credentials": {
+        "clientId": "{{clientId}}",
+        "clientSecret": "{{clientSecret}}"
+      }
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Enrollments",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Enroll a card in Pay with Points",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.chase.com/loyalty/pay-with-points/enrollment/enrollments",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Enroll a card in Pay with Points"
+        },
+        {
+          "info": {
+            "name": "Get an enrollment record",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.chase.com/loyalty/pay-with-points/enrollment/enrollments/:enrollmentId",
+            "params": [
+              {
+                "name": "enrollmentId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get an enrollment record"
+        },
+        {
+          "info": {
+            "name": "Revoke a Pay with Points enrollment",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.chase.com/loyalty/pay-with-points/enrollment/enrollments/:enrollmentId",
+            "params": [
+              {
+                "name": "enrollmentId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Revoke a Pay with Points enrollment"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
