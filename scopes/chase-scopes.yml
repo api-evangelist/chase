@@ -1,0 +1,105 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/chase-account-aggregation-user-consent-api-openapi.yml, openapi/chase-account-and-customer-information-api-openapi.yml,
+  openapi/chase-loyalty-pay-with-points-enrollment-service-api-openapi.yml, openapi/chase-loyalty-pay-with-points-order-service-api-openapi.yml,
+  openapi/chase-loyalty-pci-merchant-relationship-manager-api-openapi.yml, openapi/chase-rewards-balance-api-openapi.yml
+schemes:
+- name: oauth2
+  source: openapi/chase-account-aggregation-user-consent-api-openapi.yml
+  flows:
+  - flow: authorizationCode
+    authorizationUrl: https://api.chase.com/oauth2/authorize
+    tokenUrl: https://api.chase.com/oauth2/token
+- name: oauth2
+  source: openapi/chase-account-and-customer-information-api-openapi.yml
+  flows:
+  - flow: authorizationCode
+    authorizationUrl: https://api.chase.com/oauth2/authorize
+    tokenUrl: https://api.chase.com/oauth2/token
+- name: oauth2
+  source: openapi/chase-loyalty-pay-with-points-enrollment-service-api-openapi.yml
+  flows:
+  - flow: clientCredentials
+    tokenUrl: https://api.chase.com/oauth2/token
+- name: oauth2
+  source: openapi/chase-loyalty-pay-with-points-order-service-api-openapi.yml
+  flows:
+  - flow: clientCredentials
+    tokenUrl: https://api.chase.com/oauth2/token
+- name: oauth2
+  source: openapi/chase-loyalty-pci-merchant-relationship-manager-api-openapi.yml
+  flows:
+  - flow: clientCredentials
+    tokenUrl: https://api.chase.com/oauth2/token
+- name: oauth2
+  source: openapi/chase-rewards-balance-api-openapi.yml
+  flows:
+  - flow: clientCredentials
+    tokenUrl: https://api.chase.com/oauth2/token
+scopes:
+- scope: accounts.read
+  description: Read account data
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/chase-account-and-customer-information-api-openapi.yml
+- scope: consents.read
+  description: Read consents
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/chase-account-aggregation-user-consent-api-openapi.yml
+- scope: consents.write
+  description: Manage consents
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/chase-account-aggregation-user-consent-api-openapi.yml
+- scope: customers.read
+  description: Read customer profile
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/chase-account-and-customer-information-api-openapi.yml
+- scope: enrollments.write
+  description: Manage enrollments
+  flows:
+  - clientCredentials
+  sources:
+  - openapi/chase-loyalty-pay-with-points-enrollment-service-api-openapi.yml
+- scope: merchants.write
+  description: Manage merchants
+  flows:
+  - clientCredentials
+  sources:
+  - openapi/chase-loyalty-pci-merchant-relationship-manager-api-openapi.yml
+- scope: orders.write
+  description: Create and modify orders
+  flows:
+  - clientCredentials
+  sources:
+  - openapi/chase-loyalty-pay-with-points-order-service-api-openapi.yml
+- scope: rewards.read
+  description: Read rewards balances
+  flows:
+  - clientCredentials
+  sources:
+  - openapi/chase-rewards-balance-api-openapi.yml
+- scope: statements.read
+  description: Read statements
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/chase-account-and-customer-information-api-openapi.yml
+- scope: tax-forms.read
+  description: Read tax forms
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/chase-account-and-customer-information-api-openapi.yml
+- scope: transactions.read
+  description: Read transactions
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/chase-account-and-customer-information-api-openapi.yml
