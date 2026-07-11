@@ -1,0 +1,33 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/chase-account-aggregation-user-consent-api-openapi.yml, openapi/chase-account-and-customer-information-api-openapi.yml,
+  openapi/chase-loyalty-pay-with-points-enrollment-service-api-openapi.yml, openapi/chase-loyalty-pay-with-points-order-service-api-openapi.yml,
+  openapi/chase-loyalty-pci-merchant-relationship-manager-api-openapi.yml, openapi/chase-rewards-balance-api-openapi.yml
+summary:
+  types:
+  - oauth2
+  oauth2_flows:
+  - authorizationCode
+  - clientCredentials
+schemes:
+- name: oauth2
+  type: oauth2
+  flows:
+  - flow: authorizationCode
+    authorizationUrl: https://api.chase.com/oauth2/authorize
+    tokenUrl: https://api.chase.com/oauth2/token
+    scopes: 2
+  sources:
+  - openapi/chase-account-aggregation-user-consent-api-openapi.yml
+  - openapi/chase-account-and-customer-information-api-openapi.yml
+- name: oauth2
+  type: oauth2
+  flows:
+  - flow: clientCredentials
+    tokenUrl: https://api.chase.com/oauth2/token
+    scopes: 1
+  sources:
+  - openapi/chase-loyalty-pay-with-points-enrollment-service-api-openapi.yml
+  - openapi/chase-loyalty-pay-with-points-order-service-api-openapi.yml
+  - openapi/chase-loyalty-pci-merchant-relationship-manager-api-openapi.yml
+  - openapi/chase-rewards-balance-api-openapi.yml
