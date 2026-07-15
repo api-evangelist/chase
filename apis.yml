@@ -128,6 +128,8 @@ apis:
       - type: OpenAPI
         url: openapi/chase-loyalty-pci-merchant-relationship-manager-api-openapi.yml
 common:
+  - type: AgenticAccess
+    url: agentic-access/chase-agentic-access.yml
   - type: DomainSecurity
     url: security/chase-domain-security.yml
   - type: Authentication
