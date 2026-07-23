@@ -1,0 +1,39 @@
+openapi: 3.1.0
+info:
+  title: Chase Account Aggregation User Consent Accounts Customers API
+  description: Consent management API for the Chase FDX aggregation platform. Supports requesting, retrieving, updating, and revoking user consent for sharing account data with authorized data recipients.
+  version: '1.0'
+  contact:
+    name: Chase Developer Support
+    url: https://developer.chase.com/support
+servers:
+- url: https://api.chase.com/aggregation/consent
+  description: Chase Consent Production
+security:
+- oauth2: []
+tags:
+- name: Customers
+paths:
+  /customers/current:
+    get:
+      operationId: getCurrentCustomer
+      summary: Get the current authenticated customer
+      tags:
+      - Customers
+      responses:
+        '200':
+          description: Customer profile
+components:
+  securitySchemes:
+    oauth2:
+      type: oauth2
+      flows:
+        authorizationCode:
+          authorizationUrl: https://api.chase.com/oauth2/authorize
+          tokenUrl: https://api.chase.com/oauth2/token
+          scopes:
+            consents.write: Manage consents
+            consents.read: Read consents
+externalDocs:
+  description: Account Aggregation User Consent
+  url: https://developer.chase.com/products/aggregation-consent/

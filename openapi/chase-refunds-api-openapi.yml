@@ -1,6 +1,6 @@
 openapi: 3.1.0
 info:
-  title: Chase Account Aggregation User Consent Accounts Rewards Balance API
+  title: Chase Account Aggregation User Consent Accounts Refunds API
   description: Consent management API for the Chase FDX aggregation platform. Supports requesting, retrieving, updating, and revoking user consent for sharing account data with authorized data recipients.
   version: '1.0'
   contact:
@@ -12,44 +12,34 @@ servers:
 security:
 - oauth2: []
 tags:
-- name: Rewards Balance
+- name: Refunds
 paths:
-  /balances:
+  /orders/{orderId}/refunds:
     post:
-      operationId: getRewardsBalance
-      summary: Retrieve a rewards balance for a tokenized card
+      operationId: refundOrder
+      summary: Refund a Pay with Points order
       tags:
-      - Rewards Balance
+      - Refunds
+      parameters:
+      - name: orderId
+        in: path
+        required: true
+        schema:
+          type: string
       requestBody:
         required: true
         content:
           application/json:
             schema:
               type: object
-              required:
-              - cardToken
               properties:
-                cardToken:
-                  type: string
-                  description: PCI-compliant card token issued by Chase.
-                merchantId:
+                amount:
+                  type: number
+                reason:
                   type: string
       responses:
-        '200':
-          description: Rewards balance
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  cardToken:
-                    type: string
-                  pointsBalance:
-                    type: integer
-                  cashValue:
-                    type: number
-                  currency:
-                    type: string
+        '201':
+          description: Refund issued
 components:
   securitySchemes:
     oauth2:

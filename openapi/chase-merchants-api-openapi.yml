@@ -1,34 +1,34 @@
 openapi: 3.1.0
 info:
-  title: Chase Loyalty PCI Merchant Relationship Manager API
-  description: >-
-    PCI-compliant merchant management API for the Chase loyalty platform.
-    Used to onboard merchants, update merchant profiles, and configure
-    integration settings for Pay with Points and Rewards Balance products.
+  title: Chase Account Aggregation User Consent Accounts Merchants API
+  description: Consent management API for the Chase FDX aggregation platform. Supports requesting, retrieving, updating, and revoking user consent for sharing account data with authorized data recipients.
   version: '1.0'
   contact:
     name: Chase Developer Support
     url: https://developer.chase.com/support
 servers:
-  - url: https://api.chase.com/loyalty/merchant-relationship-manager
-    description: Merchant Relationship Manager Production
-tags:
-  - name: Merchants
+- url: https://api.chase.com/aggregation/consent
+  description: Chase Consent Production
 security:
-  - oauth2: []
+- oauth2: []
+tags:
+- name: Merchants
 paths:
   /merchants:
     post:
       operationId: createMerchant
       summary: Onboard a new merchant
-      tags: [Merchants]
+      tags:
+      - Merchants
       requestBody:
         required: true
         content:
           application/json:
             schema:
               type: object
-              required: [name, mcc]
+              required:
+              - name
+              - mcc
               properties:
                 name:
                   type: string
@@ -43,7 +43,8 @@ paths:
     get:
       operationId: listMerchants
       summary: List merchants
-      tags: [Merchants]
+      tags:
+      - Merchants
       responses:
         '200':
           description: Merchant list
@@ -51,26 +52,28 @@ paths:
     get:
       operationId: getMerchant
       summary: Get merchant details
-      tags: [Merchants]
+      tags:
+      - Merchants
       parameters:
-        - name: merchantId
-          in: path
-          required: true
-          schema:
-            type: string
+      - name: merchantId
+        in: path
+        required: true
+        schema:
+          type: string
       responses:
         '200':
           description: Merchant details
     put:
       operationId: updateMerchant
       summary: Update merchant details
-      tags: [Merchants]
+      tags:
+      - Merchants
       parameters:
-        - name: merchantId
-          in: path
-          required: true
-          schema:
-            type: string
+      - name: merchantId
+        in: path
+        required: true
+        schema:
+          type: string
       requestBody:
         required: true
         content:
@@ -85,7 +88,12 @@ components:
     oauth2:
       type: oauth2
       flows:
-        clientCredentials:
+        authorizationCode:
+          authorizationUrl: https://api.chase.com/oauth2/authorize
           tokenUrl: https://api.chase.com/oauth2/token
           scopes:
-            merchants.write: Manage merchants
+            consents.write: Manage consents
+            consents.read: Read consents
+externalDocs:
+  description: Account Aggregation User Consent
+  url: https://developer.chase.com/products/aggregation-consent/

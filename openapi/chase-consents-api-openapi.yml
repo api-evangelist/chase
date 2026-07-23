@@ -1,30 +1,25 @@
 openapi: 3.1.0
 info:
-  title: Chase Account Aggregation User Consent API
-  description: >-
-    Consent management API for the Chase FDX aggregation platform.
-    Supports requesting, retrieving, updating, and revoking user consent
-    for sharing account data with authorized data recipients.
+  title: Chase Account Aggregation User Consent Accounts Consents API
+  description: Consent management API for the Chase FDX aggregation platform. Supports requesting, retrieving, updating, and revoking user consent for sharing account data with authorized data recipients.
   version: '1.0'
   contact:
     name: Chase Developer Support
     url: https://developer.chase.com/support
-externalDocs:
-  description: Account Aggregation User Consent
-  url: https://developer.chase.com/products/aggregation-consent/
 servers:
-  - url: https://api.chase.com/aggregation/consent
-    description: Chase Consent Production
-tags:
-  - name: Consents
+- url: https://api.chase.com/aggregation/consent
+  description: Chase Consent Production
 security:
-  - oauth2: []
+- oauth2: []
+tags:
+- name: Consents
 paths:
   /consents:
     post:
       operationId: createConsent
       summary: Create a consent request
-      tags: [Consents]
+      tags:
+      - Consents
       requestBody:
         required: true
         content:
@@ -45,7 +40,8 @@ paths:
     get:
       operationId: listConsents
       summary: List consents
-      tags: [Consents]
+      tags:
+      - Consents
       responses:
         '200':
           description: Consents list
@@ -53,26 +49,28 @@ paths:
     get:
       operationId: getConsent
       summary: Get a consent record
-      tags: [Consents]
+      tags:
+      - Consents
       parameters:
-        - name: consentId
-          in: path
-          required: true
-          schema:
-            type: string
+      - name: consentId
+        in: path
+        required: true
+        schema:
+          type: string
       responses:
         '200':
           description: Consent record
     delete:
       operationId: revokeConsent
       summary: Revoke a consent
-      tags: [Consents]
+      tags:
+      - Consents
       parameters:
-        - name: consentId
-          in: path
-          required: true
-          schema:
-            type: string
+      - name: consentId
+        in: path
+        required: true
+        schema:
+          type: string
       responses:
         '204':
           description: Consent revoked
@@ -87,3 +85,6 @@ components:
           scopes:
             consents.write: Manage consents
             consents.read: Read consents
+externalDocs:
+  description: Account Aggregation User Consent
+  url: https://developer.chase.com/products/aggregation-consent/

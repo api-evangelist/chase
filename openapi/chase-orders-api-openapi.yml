@@ -1,0 +1,105 @@
+openapi: 3.1.0
+info:
+  title: Chase Account Aggregation User Consent Accounts Orders API
+  description: Consent management API for the Chase FDX aggregation platform. Supports requesting, retrieving, updating, and revoking user consent for sharing account data with authorized data recipients.
+  version: '1.0'
+  contact:
+    name: Chase Developer Support
+    url: https://developer.chase.com/support
+servers:
+- url: https://api.chase.com/aggregation/consent
+  description: Chase Consent Production
+security:
+- oauth2: []
+tags:
+- name: Orders
+paths:
+  /orders:
+    post:
+      operationId: createOrder
+      summary: Create a Pay with Points order
+      tags:
+      - Orders
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - cardToken
+              - merchantId
+              - amount
+              properties:
+                cardToken:
+                  type: string
+                merchantId:
+                  type: string
+                amount:
+                  type: number
+                pointsToRedeem:
+                  type: integer
+                currency:
+                  type: string
+      responses:
+        '201':
+          description: Order created
+  /orders/{orderId}:
+    get:
+      operationId: getOrder
+      summary: Get a Pay with Points order
+      tags:
+      - Orders
+      parameters:
+      - name: orderId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Order details
+  /orders/{orderId}/capture:
+    post:
+      operationId: captureOrder
+      summary: Capture a Pay with Points order
+      tags:
+      - Orders
+      parameters:
+      - name: orderId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Order captured
+  /orders/{orderId}/reverse:
+    post:
+      operationId: reverseOrder
+      summary: Reverse a Pay with Points order
+      tags:
+      - Orders
+      parameters:
+      - name: orderId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Order reversed
+components:
+  securitySchemes:
+    oauth2:
+      type: oauth2
+      flows:
+        authorizationCode:
+          authorizationUrl: https://api.chase.com/oauth2/authorize
+          tokenUrl: https://api.chase.com/oauth2/token
+          scopes:
+            consents.write: Manage consents
+            consents.read: Read consents
+externalDocs:
+  description: Account Aggregation User Consent
+  url: https://developer.chase.com/products/aggregation-consent/
