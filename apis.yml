@@ -5,7 +5,20 @@ description: >-
   cards, mortgages, and merchant services. The Chase Developer Portal exposes APIs for FDX-aligned account aggregation,
   customer consent, rewards balances, and the Loyalty Pay with Points platform that lets enrolled merchants and partners
   enable customers to redeem Ultimate Rewards points at checkout.
-image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+accessModel:
+  pricing: unknown
+  onboarding: self-serve
+  trial: false
+  try_now: false
+  public: false
+  label: Self-serve signup
+  confidence: high
+  source:
+  - plans
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/chase.png
 url: https://raw.githubusercontent.com/api-evangelist/chase/refs/heads/main/apis.yml
 type: Index
 access: 3rd-Party
@@ -25,108 +38,232 @@ created: '2025-02-21'
 modified: '2026-05-19'
 specificationVersion: '0.20'
 apis:
-  - aid: chase:account-and-customer-information-api
-    name: Chase Account and Customer Information API
-    description: >-
-      FDX-aligned API that allows authorized data recipients to securely retrieve account and customer information for
-      Chase customers. Supports account profiles, balances, transactions, statements, and customer details using OAuth
-      2.0 with FDX consent flows.
-    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-    humanURL: https://developer.chase.com/products/aggregation-fdx/
-    baseURL: https://api.chase.com/aggregation/fdx
-    tags:
-      - Account Aggregation
-      - FDX
-      - Open Banking
-    properties:
-      - type: Documentation
-        url: https://developer.chase.com/products/aggregation-fdx/guides/using-the-account-and-customer-information-api/
-      - type: OpenAPI
-        url: openapi/chase-account-and-customer-information-api-openapi.yml
-  - aid: chase:account-aggregation-user-consent-api
-    name: Chase Account Aggregation User Consent API
-    description: >-
-      Consent management API used to obtain, store, and revoke customer consent for sharing account information with
-      authorized third-party data recipients. Implements the FDX consent model.
-    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-    humanURL: https://developer.chase.com/products/aggregation-consent/
-    baseURL: https://api.chase.com/aggregation/consent
-    tags:
-      - Consent
-      - FDX
-      - Open Banking
-    properties:
-      - type: Documentation
-        url: https://developer.chase.com/products/aggregation-consent/
-      - type: OpenAPI
-        url: openapi/chase-account-aggregation-user-consent-api-openapi.yml
-  - aid: chase:rewards-balance-api
-    name: Chase Rewards Balance API
-    description: >-
-      API that allows merchant and partner systems to retrieve a Chase cardholder's current rewards points balance for
-      use in loyalty experiences and Pay with Points checkouts.
-    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-    humanURL: https://developer.chase.com/products/rewards-balance-api/
-    baseURL: https://api.chase.com/loyalty/rewards-balance
-    tags:
-      - Loyalty
-      - Rewards
-    properties:
-      - type: Documentation
-        url: https://developer.chase.com/products/rewards-balance-api/specification
-      - type: OpenAPI
-        url: openapi/chase-rewards-balance-api-openapi.yml
-  - aid: chase:loyalty-pay-with-points-order-service-api
-    name: Chase Loyalty Pay with Points Order Service API
-    description: >-
-      API that lets merchants accept Chase Ultimate Rewards points as payment at checkout. Supports order creation,
-      redemption, capture, refund, and reversal flows for the Pay with Points program.
-    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-    humanURL: https://developer.chase.com/products/loyalty-pay-with-points-order-service/
-    baseURL: https://api.chase.com/loyalty/pay-with-points/orders
-    tags:
-      - Loyalty
-      - Payments
-      - Rewards
-    properties:
-      - type: Documentation
-        url: https://developer.chase.com/products/loyalty-pay-with-points-order-service/
-      - type: OpenAPI
-        url: openapi/chase-loyalty-pay-with-points-order-service-api-openapi.yml
-  - aid: chase:loyalty-pay-with-points-enrollment-service-api
-    name: Chase Loyalty Pay with Points Enrollment Service API
-    description: >-
-      API that allows merchants and partners to enroll customer payment cards in the Chase Pay with Points program so
-      points can be redeemed against future purchases.
-    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-    humanURL: https://developer.chase.com/products/loyalty-pay-with-points-enrollment-service/
-    baseURL: https://api.chase.com/loyalty/pay-with-points/enrollment
-    tags:
-      - Loyalty
-      - Payments
-      - Rewards
-    properties:
-      - type: Documentation
-        url: https://developer.chase.com/products/loyalty-pay-with-points-enrollment-service/
-      - type: OpenAPI
-        url: openapi/chase-loyalty-pay-with-points-enrollment-service-api-openapi.yml
-  - aid: chase:loyalty-pci-merchant-relationship-manager-api
-    name: Chase Loyalty PCI Merchant Relationship Manager API
-    description: >-
-      API for managing PCI-compliant merchant relationships for the Chase loyalty platform, supporting onboarding,
-      profile updates, and configuration of merchant integrations.
-    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-    humanURL: https://developer.chase.com/products/loyalty-pci-merchant-relation-manager/
-    baseURL: https://api.chase.com/loyalty/merchant-relationship-manager
-    tags:
-      - Loyalty
-      - Merchants
-      - PCI
-    properties:
-      - type: Documentation
-        url: https://developer.chase.com/products/loyalty-pci-merchant-relation-manager/
-      - type: OpenAPI
-        url: openapi/chase-loyalty-pci-merchant-relationship-manager-api-openapi.yml
+- aid: chase:rewards-balance-api
+  name: Chase Rewards Balance API
+  description: >-
+    API that allows merchant and partner systems to retrieve a Chase cardholder's current rewards points
+    balance for use in loyalty experiences and Pay with Points checkouts.
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://developer.chase.com/products/rewards-balance-api/
+  baseURL: https://api.chase.com/loyalty/rewards-balance
+  tags:
+  - Loyalty
+  - Rewards
+  properties:
+  - type: Documentation
+    url: https://developer.chase.com/products/rewards-balance-api/specification
+  - type: OpenAPI
+    url: openapi/chase-rewards-balance-api-openapi.yml
+- aid: chase:chase-accounts-api
+  name: Chase Accounts API
+  description: The Accounts API from Chase — 2 operation(s) for accounts.
+  humanURL: https://developer.chase.com/products/aggregation-fdx/
+  baseURL: https://api.chase.com/aggregation/fdx
+  tags:
+  - Accounts
+  properties:
+  - type: OpenAPI
+    url: openapi/chase-accounts-api-openapi.yml
+  - type: Documentation
+    url: >-
+      https://developer.chase.com/products/aggregation-fdx/guides/using-the-account-and-customer-information-api/
+  - type: Documentation
+    url: https://developer.chase.com/products/aggregation-consent/
+  - type: Documentation
+    url: https://developer.chase.com/products/loyalty-pay-with-points-order-service/
+  - type: Documentation
+    url: https://developer.chase.com/products/loyalty-pay-with-points-enrollment-service/
+  - type: Documentation
+    url: https://developer.chase.com/products/loyalty-pci-merchant-relation-manager/
+- aid: chase:chase-consents-api
+  name: Chase Consents API
+  description: The Consents API from Chase — 2 operation(s) for consents.
+  humanURL: https://developer.chase.com/products/aggregation-fdx/
+  baseURL: https://api.chase.com/aggregation/fdx
+  tags:
+  - Consents
+  properties:
+  - type: OpenAPI
+    url: openapi/chase-consents-api-openapi.yml
+  - type: Documentation
+    url: >-
+      https://developer.chase.com/products/aggregation-fdx/guides/using-the-account-and-customer-information-api/
+  - type: Documentation
+    url: https://developer.chase.com/products/aggregation-consent/
+  - type: Documentation
+    url: https://developer.chase.com/products/loyalty-pay-with-points-order-service/
+  - type: Documentation
+    url: https://developer.chase.com/products/loyalty-pay-with-points-enrollment-service/
+  - type: Documentation
+    url: https://developer.chase.com/products/loyalty-pci-merchant-relation-manager/
+- aid: chase:chase-customers-api
+  name: Chase Customers API
+  description: The Customers API from Chase — 1 operation(s) for customers.
+  humanURL: https://developer.chase.com/products/aggregation-fdx/
+  baseURL: https://api.chase.com/aggregation/fdx
+  tags:
+  - Customers
+  properties:
+  - type: OpenAPI
+    url: openapi/chase-customers-api-openapi.yml
+  - type: Documentation
+    url: >-
+      https://developer.chase.com/products/aggregation-fdx/guides/using-the-account-and-customer-information-api/
+  - type: Documentation
+    url: https://developer.chase.com/products/aggregation-consent/
+  - type: Documentation
+    url: https://developer.chase.com/products/loyalty-pay-with-points-order-service/
+  - type: Documentation
+    url: https://developer.chase.com/products/loyalty-pay-with-points-enrollment-service/
+  - type: Documentation
+    url: https://developer.chase.com/products/loyalty-pci-merchant-relation-manager/
+- aid: chase:chase-enrollments-api
+  name: Chase Enrollments API
+  description: The Enrollments API from Chase — 2 operation(s) for enrollments.
+  humanURL: https://developer.chase.com/products/aggregation-fdx/
+  baseURL: https://api.chase.com/aggregation/fdx
+  tags:
+  - Enrollments
+  properties:
+  - type: OpenAPI
+    url: openapi/chase-enrollments-api-openapi.yml
+  - type: Documentation
+    url: >-
+      https://developer.chase.com/products/aggregation-fdx/guides/using-the-account-and-customer-information-api/
+  - type: Documentation
+    url: https://developer.chase.com/products/aggregation-consent/
+  - type: Documentation
+    url: https://developer.chase.com/products/loyalty-pay-with-points-order-service/
+  - type: Documentation
+    url: https://developer.chase.com/products/loyalty-pay-with-points-enrollment-service/
+  - type: Documentation
+    url: https://developer.chase.com/products/loyalty-pci-merchant-relation-manager/
+- aid: chase:chase-merchants-api
+  name: Chase Merchants API
+  description: The Merchants API from Chase — 2 operation(s) for merchants.
+  humanURL: https://developer.chase.com/products/aggregation-fdx/
+  baseURL: https://api.chase.com/aggregation/fdx
+  tags:
+  - Merchants
+  properties:
+  - type: OpenAPI
+    url: openapi/chase-merchants-api-openapi.yml
+  - type: Documentation
+    url: >-
+      https://developer.chase.com/products/aggregation-fdx/guides/using-the-account-and-customer-information-api/
+  - type: Documentation
+    url: https://developer.chase.com/products/aggregation-consent/
+  - type: Documentation
+    url: https://developer.chase.com/products/loyalty-pay-with-points-order-service/
+  - type: Documentation
+    url: https://developer.chase.com/products/loyalty-pay-with-points-enrollment-service/
+  - type: Documentation
+    url: https://developer.chase.com/products/loyalty-pci-merchant-relation-manager/
+- aid: chase:chase-orders-api
+  name: Chase Orders API
+  description: The Orders API from Chase — 4 operation(s) for orders.
+  humanURL: https://developer.chase.com/products/aggregation-fdx/
+  baseURL: https://api.chase.com/aggregation/fdx
+  tags:
+  - Orders
+  properties:
+  - type: OpenAPI
+    url: openapi/chase-orders-api-openapi.yml
+  - type: Documentation
+    url: >-
+      https://developer.chase.com/products/aggregation-fdx/guides/using-the-account-and-customer-information-api/
+  - type: Documentation
+    url: https://developer.chase.com/products/aggregation-consent/
+  - type: Documentation
+    url: https://developer.chase.com/products/loyalty-pay-with-points-order-service/
+  - type: Documentation
+    url: https://developer.chase.com/products/loyalty-pay-with-points-enrollment-service/
+  - type: Documentation
+    url: https://developer.chase.com/products/loyalty-pci-merchant-relation-manager/
+- aid: chase:chase-refunds-api
+  name: Chase Refunds API
+  description: The Refunds API from Chase — 1 operation(s) for refunds.
+  humanURL: https://developer.chase.com/products/aggregation-fdx/
+  baseURL: https://api.chase.com/aggregation/fdx
+  tags:
+  - Refunds
+  properties:
+  - type: OpenAPI
+    url: openapi/chase-refunds-api-openapi.yml
+  - type: Documentation
+    url: >-
+      https://developer.chase.com/products/aggregation-fdx/guides/using-the-account-and-customer-information-api/
+  - type: Documentation
+    url: https://developer.chase.com/products/aggregation-consent/
+  - type: Documentation
+    url: https://developer.chase.com/products/loyalty-pay-with-points-order-service/
+  - type: Documentation
+    url: https://developer.chase.com/products/loyalty-pay-with-points-enrollment-service/
+  - type: Documentation
+    url: https://developer.chase.com/products/loyalty-pci-merchant-relation-manager/
+- aid: chase:chase-statements-api
+  name: Chase Statements API
+  description: The Statements API from Chase — 1 operation(s) for statements.
+  humanURL: https://developer.chase.com/products/aggregation-fdx/
+  baseURL: https://api.chase.com/aggregation/fdx
+  tags:
+  - Statements
+  properties:
+  - type: OpenAPI
+    url: openapi/chase-statements-api-openapi.yml
+  - type: Documentation
+    url: >-
+      https://developer.chase.com/products/aggregation-fdx/guides/using-the-account-and-customer-information-api/
+  - type: Documentation
+    url: https://developer.chase.com/products/aggregation-consent/
+  - type: Documentation
+    url: https://developer.chase.com/products/loyalty-pay-with-points-order-service/
+  - type: Documentation
+    url: https://developer.chase.com/products/loyalty-pay-with-points-enrollment-service/
+  - type: Documentation
+    url: https://developer.chase.com/products/loyalty-pci-merchant-relation-manager/
+- aid: chase:chase-tax-forms-api
+  name: Chase Tax Forms API
+  description: The Tax Forms API from Chase — 1 operation(s) for tax forms.
+  humanURL: https://developer.chase.com/products/aggregation-fdx/
+  baseURL: https://api.chase.com/aggregation/fdx
+  tags:
+  - Tax Forms
+  properties:
+  - type: OpenAPI
+    url: openapi/chase-tax-forms-api-openapi.yml
+  - type: Documentation
+    url: >-
+      https://developer.chase.com/products/aggregation-fdx/guides/using-the-account-and-customer-information-api/
+  - type: Documentation
+    url: https://developer.chase.com/products/aggregation-consent/
+  - type: Documentation
+    url: https://developer.chase.com/products/loyalty-pay-with-points-order-service/
+  - type: Documentation
+    url: https://developer.chase.com/products/loyalty-pay-with-points-enrollment-service/
+  - type: Documentation
+    url: https://developer.chase.com/products/loyalty-pci-merchant-relation-manager/
+- aid: chase:chase-transactions-api
+  name: Chase Transactions API
+  description: The Transactions API from Chase — 1 operation(s) for transactions.
+  humanURL: https://developer.chase.com/products/aggregation-fdx/
+  baseURL: https://api.chase.com/aggregation/fdx
+  tags:
+  - Transactions
+  properties:
+  - type: OpenAPI
+    url: openapi/chase-transactions-api-openapi.yml
+  - type: Documentation
+    url: >-
+      https://developer.chase.com/products/aggregation-fdx/guides/using-the-account-and-customer-information-api/
+  - type: Documentation
+    url: https://developer.chase.com/products/aggregation-consent/
+  - type: Documentation
+    url: https://developer.chase.com/products/loyalty-pay-with-points-order-service/
+  - type: Documentation
+    url: https://developer.chase.com/products/loyalty-pay-with-points-enrollment-service/
+  - type: Documentation
+    url: https://developer.chase.com/products/loyalty-pci-merchant-relation-manager/
 common:
   - type: AgenticAccess
     url: agentic-access/chase-agentic-access.yml
