@@ -1,0 +1,89 @@
+openapi: 3.1.0
+info:
+  title: Chase Account Aggregation User Consent API
+  description: >-
+    Consent management API for the Chase FDX aggregation platform.
+    Supports requesting, retrieving, updating, and revoking user consent
+    for sharing account data with authorized data recipients.
+  version: '1.0'
+  contact:
+    name: Chase Developer Support
+    url: https://developer.chase.com/support
+externalDocs:
+  description: Account Aggregation User Consent
+  url: https://developer.chase.com/products/aggregation-consent/
+servers:
+  - url: https://api.chase.com/aggregation/consent
+    description: Chase Consent Production
+tags:
+  - name: Consents
+security:
+  - oauth2: []
+paths:
+  /consents:
+    post:
+      operationId: createConsent
+      summary: Create a consent request
+      tags: [Consents]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                permissions:
+                  type: array
+                  items:
+                    type: string
+                expirationTime:
+                  type: string
+                  format: date-time
+      responses:
+        '201':
+          description: Consent created
+    get:
+      operationId: listConsents
+      summary: List consents
+      tags: [Consents]
+      responses:
+        '200':
+          description: Consents list
+  /consents/{consentId}:
+    get:
+      operationId: getConsent
+      summary: Get a consent record
+      tags: [Consents]
+      parameters:
+        - name: consentId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Consent record
+    delete:
+      operationId: revokeConsent
+      summary: Revoke a consent
+      tags: [Consents]
+      parameters:
+        - name: consentId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '204':
+          description: Consent revoked
+components:
+  securitySchemes:
+    oauth2:
+      type: oauth2
+      flows:
+        authorizationCode:
+          authorizationUrl: https://api.chase.com/oauth2/authorize
+          tokenUrl: https://api.chase.com/oauth2/token
+          scopes:
+            consents.write: Manage consents
+            consents.read: Read consents

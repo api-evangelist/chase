@@ -1,0 +1,34 @@
+{
+  "provider": "chase",
+  "sources": [
+    "chase-accounts-api-openapi.yml",
+    "chase-consents-api-openapi.yml",
+    "chase-customers-api-openapi.yml",
+    "chase-enrollments-api-openapi.yml",
+    "chase-merchants-api-openapi.yml",
+    "chase-orders-api-openapi.yml",
+    "chase-refunds-api-openapi.yml",
+    "chase-rewards-balance-api-openapi.yml",
+    "chase-statements-api-openapi.yml",
+    "chase-tax-forms-api-openapi.yml",
+    "chase-transactions-api-openapi.yml"
+  ],
+  "outputs": [
+    "chase-accounts-api-openapi.yml",
+    "chase-consents-api-openapi.yml",
+    "chase-customers-api-openapi.yml",
+    "chase-enrollments-api-openapi.yml",
+    "chase-merchants-api-openapi.yml",
+    "chase-orders-api-openapi.yml",
+    "chase-refunds-api-openapi.yml",
+    "chase-rewards-balance-api-openapi.yml",
+    "chase-statements-api-openapi.yml",
+    "chase-tax-forms-api-openapi.yml",
+    "chase-transactions-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}

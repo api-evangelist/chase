@@ -1,0 +1,91 @@
+openapi: 3.1.0
+info:
+  title: Chase Loyalty PCI Merchant Relationship Manager API
+  description: >-
+    PCI-compliant merchant management API for the Chase loyalty platform.
+    Used to onboard merchants, update merchant profiles, and configure
+    integration settings for Pay with Points and Rewards Balance products.
+  version: '1.0'
+  contact:
+    name: Chase Developer Support
+    url: https://developer.chase.com/support
+servers:
+  - url: https://api.chase.com/loyalty/merchant-relationship-manager
+    description: Merchant Relationship Manager Production
+tags:
+  - name: Merchants
+security:
+  - oauth2: []
+paths:
+  /merchants:
+    post:
+      operationId: createMerchant
+      summary: Onboard a new merchant
+      tags: [Merchants]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [name, mcc]
+              properties:
+                name:
+                  type: string
+                mcc:
+                  type: string
+                  description: Merchant category code.
+                contact:
+                  type: object
+      responses:
+        '201':
+          description: Merchant created
+    get:
+      operationId: listMerchants
+      summary: List merchants
+      tags: [Merchants]
+      responses:
+        '200':
+          description: Merchant list
+  /merchants/{merchantId}:
+    get:
+      operationId: getMerchant
+      summary: Get merchant details
+      tags: [Merchants]
+      parameters:
+        - name: merchantId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Merchant details
+    put:
+      operationId: updateMerchant
+      summary: Update merchant details
+      tags: [Merchants]
+      parameters:
+        - name: merchantId
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+      responses:
+        '200':
+          description: Merchant updated
+components:
+  securitySchemes:
+    oauth2:
+      type: oauth2
+      flows:
+        clientCredentials:
+          tokenUrl: https://api.chase.com/oauth2/token
+          scopes:
+            merchants.write: Manage merchants
