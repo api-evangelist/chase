@@ -5,6 +5,18 @@ description: >-
   cards, mortgages, and merchant services. The Chase Developer Portal exposes APIs for FDX-aligned account aggregation,
   customer consent, rewards balances, and the Loyalty Pay with Points platform that lets enrolled merchants and partners
   enable customers to redeem Ultimate Rewards points at checkout.
+deliveryModel:
+  model: saas
+  open_source: false
+  commercial: true
+  callable_host: true
+  label: Hosted service · you call their endpoint
+  confidence: high
+  source:
+  - openapi
+  - pricing
+  generated: '2026-08-11'
+  method: derived
 accessModel:
   pricing: unknown
   onboarding: self-serve
