@@ -48,7 +48,7 @@ tags:
   - Rewards
 created: '2025-02-21'
 modified: '2026-05-19'
-specificationVersion: '0.20'
+specificationVersion: '0.23'
 apis:
 - aid: chase:rewards-balance-api
   name: Chase Rewards Balance API
