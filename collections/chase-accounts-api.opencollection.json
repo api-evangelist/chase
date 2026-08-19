@@ -1,0 +1,59 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Chase Account Aggregation User Consent Accounts API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "oauth2",
+      "flow": "authorization_code",
+      "authorizationUrl": "https://api.chase.com/oauth2/authorize",
+      "accessTokenUrl": "https://api.chase.com/oauth2/token",
+      "credentials": {
+        "clientId": "{{clientId}}",
+        "clientSecret": "{{clientSecret}}"
+      }
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Accounts",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List accessible accounts",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.chase.com/aggregation/consent/accounts"
+          },
+          "docs": "List accessible accounts"
+        },
+        {
+          "info": {
+            "name": "Get account details",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.chase.com/aggregation/consent/accounts/:accountId",
+            "params": [
+              {
+                "name": "accountId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get account details"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

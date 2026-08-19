@@ -1,7 +1,7 @@
 {
   "opencollection": "1.0.0",
   "info": {
-    "name": "Chase Account Aggregation User Consent Accounts Rewards Balance API",
+    "name": "Chase Account Aggregation User Consent Accounts Customers API",
     "version": "1.0"
   },
   "request": {
@@ -19,24 +19,20 @@
   "items": [
     {
       "info": {
-        "name": "Rewards Balance",
+        "name": "Customers",
         "type": "folder"
       },
       "items": [
         {
           "info": {
-            "name": "Retrieve a rewards balance for a tokenized card",
+            "name": "Get the current authenticated customer",
             "type": "http"
           },
           "http": {
-            "method": "POST",
-            "url": "https://api.chase.com/aggregation/consent/balances",
-            "body": {
-              "type": "json",
-              "data": "{}"
-            }
+            "method": "GET",
+            "url": "https://api.chase.com/aggregation/consent/customers/current"
           },
-          "docs": "Retrieve a rewards balance for a tokenized card"
+          "docs": "Get the current authenticated customer"
         }
       ]
     }

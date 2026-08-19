@@ -1,65 +1,66 @@
 {
   "item": [
     {
-      "id": "b061fd42-e035-4e62-a3af-c93c2b745521",
-      "name": "Rewards Balance",
+      "id": "8bf53adc-aeed-4c3e-b12d-28941f0cf086",
+      "name": "Tax Forms",
       "description": {
         "content": "",
         "type": "text/plain"
       },
       "item": [
         {
-          "id": "4a10b4e8-ba56-4f26-bbf6-6c0a2052c4c1",
-          "name": "Retrieve a rewards balance for a tokenized card",
+          "id": "b739273f-6d31-4966-be78-78aaebd75808",
+          "name": "List tax forms for an account",
           "request": {
-            "name": "Retrieve a rewards balance for a tokenized card",
+            "name": "List tax forms for an account",
             "description": {},
             "url": {
               "path": [
-                "balances"
+                "accounts",
+                ":accountId",
+                "tax-forms"
               ],
               "host": [
                 "{{baseUrl}}"
               ],
               "query": [],
-              "variable": []
-            },
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              },
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "POST",
-            "auth": null,
-            "body": {
-              "mode": "raw",
-              "raw": "{\n  \"cardToken\": \"<string>\",\n  \"merchantId\": \"<string>\"\n}",
-              "options": {
-                "raw": {
-                  "language": "json"
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "accountId",
+                  "description": "(Required) "
                 }
-              }
-            }
+              ]
+            },
+            "method": "GET",
+            "auth": null
           },
           "response": [
             {
-              "id": "c1a1dc60-9dc7-4f8f-903c-2dbf8dfc7151",
-              "name": "Rewards balance",
+              "id": "2bfbd5c0-c0f0-408c-80fc-bf62c1122158",
+              "name": "Tax forms list",
               "originalRequest": {
                 "url": {
                   "path": [
-                    "balances"
+                    "accounts",
+                    ":accountId",
+                    "tax-forms"
                   ],
                   "host": [
                     "{{baseUrl}}"
                   ],
                   "query": [],
-                  "variable": []
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "accountId",
+                      "description": "(Required) "
+                    }
+                  ]
                 },
                 "header": [
                   {
@@ -69,34 +70,22 @@
                     },
                     "key": "Authorization",
                     "value": "<token>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
                   }
                 ],
-                "method": "POST",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"cardToken\": \"<string>\",\n  \"merchantId\": \"<string>\"\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
+                "method": "GET",
+                "body": {}
               },
               "status": "OK",
               "code": 200,
               "header": [
                 {
                   "key": "Content-Type",
-                  "value": "application/json"
+                  "value": "text/plain"
                 }
               ],
-              "body": "{\n  \"cardToken\": \"string\",\n  \"pointsBalance\": 4970,\n  \"cashValue\": 5507.21875165278,\n  \"currency\": \"string\"\n}",
+              "body": "",
               "cookie": [],
-              "_postman_previewlanguage": "json"
+              "_postman_previewlanguage": "text"
             }
           ],
           "event": [],
@@ -138,8 +127,8 @@
     ]
   },
   "info": {
-    "_postman_id": "b1582027-b26e-4cc0-94a7-6feb718d0a1f",
-    "name": "Chase Account Aggregation User Consent Accounts Rewards Balance API",
+    "_postman_id": "5990ecae-c554-49a5-8c68-0cc7d0f68d7a",
+    "name": "Chase Account Aggregation User Consent Accounts Tax Forms API",
     "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
     "description": {
       "content": "Consent management API for the Chase FDX aggregation platform. Supports requesting, retrieving, updating, and revoking user consent for sharing account data with authorized data recipients.\n\nContact Support:\n Name: Chase Developer Support",

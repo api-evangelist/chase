@@ -1,65 +1,86 @@
 {
   "item": [
     {
-      "id": "b061fd42-e035-4e62-a3af-c93c2b745521",
-      "name": "Rewards Balance",
+      "id": "063ef8d8-4432-4f26-b8f0-2f706b067f03",
+      "name": "Transactions",
       "description": {
         "content": "",
         "type": "text/plain"
       },
       "item": [
         {
-          "id": "4a10b4e8-ba56-4f26-bbf6-6c0a2052c4c1",
-          "name": "Retrieve a rewards balance for a tokenized card",
+          "id": "6fad013e-16ee-41a2-afb1-f3c28a97cdb8",
+          "name": "List account transactions",
           "request": {
-            "name": "Retrieve a rewards balance for a tokenized card",
+            "name": "List account transactions",
             "description": {},
             "url": {
               "path": [
-                "balances"
+                "accounts",
+                ":accountId",
+                "transactions"
               ],
               "host": [
                 "{{baseUrl}}"
               ],
-              "query": [],
-              "variable": []
-            },
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              },
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "POST",
-            "auth": null,
-            "body": {
-              "mode": "raw",
-              "raw": "{\n  \"cardToken\": \"<string>\",\n  \"merchantId\": \"<string>\"\n}",
-              "options": {
-                "raw": {
-                  "language": "json"
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "startTime",
+                  "value": "<dateTime>"
+                },
+                {
+                  "disabled": false,
+                  "key": "endTime",
+                  "value": "<dateTime>"
                 }
-              }
-            }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "accountId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "method": "GET",
+            "auth": null
           },
           "response": [
             {
-              "id": "c1a1dc60-9dc7-4f8f-903c-2dbf8dfc7151",
-              "name": "Rewards balance",
+              "id": "8fb0be4b-67eb-47cc-84bc-830efa72e208",
+              "name": "Transactions list",
               "originalRequest": {
                 "url": {
                   "path": [
-                    "balances"
+                    "accounts",
+                    ":accountId",
+                    "transactions"
                   ],
                   "host": [
                     "{{baseUrl}}"
                   ],
-                  "query": [],
-                  "variable": []
+                  "query": [
+                    {
+                      "key": "startTime",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "endTime",
+                      "value": "<dateTime>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "accountId",
+                      "description": "(Required) "
+                    }
+                  ]
                 },
                 "header": [
                   {
@@ -69,34 +90,22 @@
                     },
                     "key": "Authorization",
                     "value": "<token>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
                   }
                 ],
-                "method": "POST",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"cardToken\": \"<string>\",\n  \"merchantId\": \"<string>\"\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
+                "method": "GET",
+                "body": {}
               },
               "status": "OK",
               "code": 200,
               "header": [
                 {
                   "key": "Content-Type",
-                  "value": "application/json"
+                  "value": "text/plain"
                 }
               ],
-              "body": "{\n  \"cardToken\": \"string\",\n  \"pointsBalance\": 4970,\n  \"cashValue\": 5507.21875165278,\n  \"currency\": \"string\"\n}",
+              "body": "",
               "cookie": [],
-              "_postman_previewlanguage": "json"
+              "_postman_previewlanguage": "text"
             }
           ],
           "event": [],
@@ -138,8 +147,8 @@
     ]
   },
   "info": {
-    "_postman_id": "b1582027-b26e-4cc0-94a7-6feb718d0a1f",
-    "name": "Chase Account Aggregation User Consent Accounts Rewards Balance API",
+    "_postman_id": "e3139d3e-cae2-4480-9686-f3a32a459152",
+    "name": "Chase Account Aggregation User Consent Accounts Transactions API",
     "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
     "description": {
       "content": "Consent management API for the Chase FDX aggregation platform. Supports requesting, retrieving, updating, and revoking user consent for sharing account data with authorized data recipients.\n\nContact Support:\n Name: Chase Developer Support",

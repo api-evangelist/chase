@@ -1,22 +1,23 @@
 {
   "item": [
     {
-      "id": "b061fd42-e035-4e62-a3af-c93c2b745521",
-      "name": "Rewards Balance",
+      "id": "20d789f4-0e1f-4196-9279-d887dad22b88",
+      "name": "Customers",
       "description": {
         "content": "",
         "type": "text/plain"
       },
       "item": [
         {
-          "id": "4a10b4e8-ba56-4f26-bbf6-6c0a2052c4c1",
-          "name": "Retrieve a rewards balance for a tokenized card",
+          "id": "7f8900e5-d3a4-4e90-b8fb-cc9e19fab5f8",
+          "name": "Get the current authenticated customer",
           "request": {
-            "name": "Retrieve a rewards balance for a tokenized card",
+            "name": "Get the current authenticated customer",
             "description": {},
             "url": {
               "path": [
-                "balances"
+                "customers",
+                "current"
               ],
               "host": [
                 "{{baseUrl}}"
@@ -24,36 +25,18 @@
               "query": [],
               "variable": []
             },
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              },
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "POST",
-            "auth": null,
-            "body": {
-              "mode": "raw",
-              "raw": "{\n  \"cardToken\": \"<string>\",\n  \"merchantId\": \"<string>\"\n}",
-              "options": {
-                "raw": {
-                  "language": "json"
-                }
-              }
-            }
+            "method": "GET",
+            "auth": null
           },
           "response": [
             {
-              "id": "c1a1dc60-9dc7-4f8f-903c-2dbf8dfc7151",
-              "name": "Rewards balance",
+              "id": "4976e683-0d38-4282-a86e-537fe010e115",
+              "name": "Customer profile",
               "originalRequest": {
                 "url": {
                   "path": [
-                    "balances"
+                    "customers",
+                    "current"
                   ],
                   "host": [
                     "{{baseUrl}}"
@@ -69,34 +52,22 @@
                     },
                     "key": "Authorization",
                     "value": "<token>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
                   }
                 ],
-                "method": "POST",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"cardToken\": \"<string>\",\n  \"merchantId\": \"<string>\"\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
+                "method": "GET",
+                "body": {}
               },
               "status": "OK",
               "code": 200,
               "header": [
                 {
                   "key": "Content-Type",
-                  "value": "application/json"
+                  "value": "text/plain"
                 }
               ],
-              "body": "{\n  \"cardToken\": \"string\",\n  \"pointsBalance\": 4970,\n  \"cashValue\": 5507.21875165278,\n  \"currency\": \"string\"\n}",
+              "body": "",
               "cookie": [],
-              "_postman_previewlanguage": "json"
+              "_postman_previewlanguage": "text"
             }
           ],
           "event": [],
@@ -138,8 +109,8 @@
     ]
   },
   "info": {
-    "_postman_id": "b1582027-b26e-4cc0-94a7-6feb718d0a1f",
-    "name": "Chase Account Aggregation User Consent Accounts Rewards Balance API",
+    "_postman_id": "38f53a81-c9c8-4280-a098-c29ecedb11d3",
+    "name": "Chase Account Aggregation User Consent Accounts Customers API",
     "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
     "description": {
       "content": "Consent management API for the Chase FDX aggregation platform. Supports requesting, retrieving, updating, and revoking user consent for sharing account data with authorized data recipients.\n\nContact Support:\n Name: Chase Developer Support",

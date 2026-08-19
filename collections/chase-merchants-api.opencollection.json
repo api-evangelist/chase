@@ -1,0 +1,96 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Chase Account Aggregation User Consent Accounts Merchants API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "oauth2",
+      "flow": "authorization_code",
+      "authorizationUrl": "https://api.chase.com/oauth2/authorize",
+      "accessTokenUrl": "https://api.chase.com/oauth2/token",
+      "credentials": {
+        "clientId": "{{clientId}}",
+        "clientSecret": "{{clientSecret}}"
+      }
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Merchants",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List merchants",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.chase.com/aggregation/consent/merchants"
+          },
+          "docs": "List merchants"
+        },
+        {
+          "info": {
+            "name": "Onboard a new merchant",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.chase.com/aggregation/consent/merchants",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Onboard a new merchant"
+        },
+        {
+          "info": {
+            "name": "Get merchant details",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.chase.com/aggregation/consent/merchants/:merchantId",
+            "params": [
+              {
+                "name": "merchantId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get merchant details"
+        },
+        {
+          "info": {
+            "name": "Update merchant details",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.chase.com/aggregation/consent/merchants/:merchantId",
+            "params": [
+              {
+                "name": "merchantId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update merchant details"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,36 +1,42 @@
 {
   "item": [
     {
-      "id": "b061fd42-e035-4e62-a3af-c93c2b745521",
-      "name": "Rewards Balance",
+      "id": "9c9ae96b-e95a-407d-89cd-dbf7a8797b21",
+      "name": "Refunds",
       "description": {
         "content": "",
         "type": "text/plain"
       },
       "item": [
         {
-          "id": "4a10b4e8-ba56-4f26-bbf6-6c0a2052c4c1",
-          "name": "Retrieve a rewards balance for a tokenized card",
+          "id": "fed0d2f4-15c9-4beb-8175-99bf975e510c",
+          "name": "Refund a Pay with Points order",
           "request": {
-            "name": "Retrieve a rewards balance for a tokenized card",
+            "name": "Refund a Pay with Points order",
             "description": {},
             "url": {
               "path": [
-                "balances"
+                "orders",
+                ":orderId",
+                "refunds"
               ],
               "host": [
                 "{{baseUrl}}"
               ],
               "query": [],
-              "variable": []
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "orderId",
+                  "description": "(Required) "
+                }
+              ]
             },
             "header": [
               {
                 "key": "Content-Type",
-                "value": "application/json"
-              },
-              {
-                "key": "Accept",
                 "value": "application/json"
               }
             ],
@@ -38,7 +44,7 @@
             "auth": null,
             "body": {
               "mode": "raw",
-              "raw": "{\n  \"cardToken\": \"<string>\",\n  \"merchantId\": \"<string>\"\n}",
+              "raw": "{\n  \"amount\": \"<number>\",\n  \"reason\": \"<string>\"\n}",
               "options": {
                 "raw": {
                   "language": "json"
@@ -48,18 +54,28 @@
           },
           "response": [
             {
-              "id": "c1a1dc60-9dc7-4f8f-903c-2dbf8dfc7151",
-              "name": "Rewards balance",
+              "id": "9662269f-035b-49bc-81fe-1f3b99f37e33",
+              "name": "Refund issued",
               "originalRequest": {
                 "url": {
                   "path": [
-                    "balances"
+                    "orders",
+                    ":orderId",
+                    "refunds"
                   ],
                   "host": [
                     "{{baseUrl}}"
                   ],
                   "query": [],
-                  "variable": []
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "orderId",
+                      "description": "(Required) "
+                    }
+                  ]
                 },
                 "header": [
                   {
@@ -69,16 +85,12 @@
                     },
                     "key": "Authorization",
                     "value": "<token>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
                   }
                 ],
                 "method": "POST",
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n  \"cardToken\": \"<string>\",\n  \"merchantId\": \"<string>\"\n}",
+                  "raw": "{\n  \"amount\": \"<number>\",\n  \"reason\": \"<string>\"\n}",
                   "options": {
                     "raw": {
                       "language": "json"
@@ -86,17 +98,17 @@
                   }
                 }
               },
-              "status": "OK",
-              "code": 200,
+              "status": "Created",
+              "code": 201,
               "header": [
                 {
                   "key": "Content-Type",
-                  "value": "application/json"
+                  "value": "text/plain"
                 }
               ],
-              "body": "{\n  \"cardToken\": \"string\",\n  \"pointsBalance\": 4970,\n  \"cashValue\": 5507.21875165278,\n  \"currency\": \"string\"\n}",
+              "body": "",
               "cookie": [],
-              "_postman_previewlanguage": "json"
+              "_postman_previewlanguage": "text"
             }
           ],
           "event": [],
@@ -138,8 +150,8 @@
     ]
   },
   "info": {
-    "_postman_id": "b1582027-b26e-4cc0-94a7-6feb718d0a1f",
-    "name": "Chase Account Aggregation User Consent Accounts Rewards Balance API",
+    "_postman_id": "831a6567-1666-40a4-a5f6-5dd76d754be3",
+    "name": "Chase Account Aggregation User Consent Accounts Refunds API",
     "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
     "description": {
       "content": "Consent management API for the Chase FDX aggregation platform. Supports requesting, retrieving, updating, and revoking user consent for sharing account data with authorized data recipients.\n\nContact Support:\n Name: Chase Developer Support",
