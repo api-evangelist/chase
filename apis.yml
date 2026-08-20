@@ -41,6 +41,17 @@ tags:
   - Consent
   - Credit Cards
   - FDX
+  - Financial-Services
+  - Loyalty
+  - Open Banking
+  - Pay with Points
+  - Rewards
+tags_raw:
+  - Account Aggregation
+  - Banking
+  - Consent
+  - Credit Cards
+  - FDX
   - Financial Services
   - Loyalty
   - Open Banking
@@ -72,6 +83,8 @@ apis:
   humanURL: https://developer.chase.com/products/aggregation-fdx/
   baseURL: https://api.chase.com/aggregation/fdx
   tags:
+  - Account
+  tags_raw:
   - Accounts
   properties:
   - type: OpenAPI
@@ -177,6 +190,8 @@ apis:
   humanURL: https://developer.chase.com/products/aggregation-fdx/
   baseURL: https://api.chase.com/aggregation/fdx
   tags:
+  - Order
+  tags_raw:
   - Orders
   properties:
   - type: OpenAPI
@@ -261,6 +276,8 @@ apis:
   humanURL: https://developer.chase.com/products/aggregation-fdx/
   baseURL: https://api.chase.com/aggregation/fdx
   tags:
+  - Transaction
+  tags_raw:
   - Transactions
   properties:
   - type: OpenAPI
