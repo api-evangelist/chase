@@ -294,6 +294,9 @@ apis:
   - type: Documentation
     url: https://developer.chase.com/products/loyalty-pci-merchant-relation-manager/
 common:
+  - type: CapabilityMap
+    url: capabilities/chase-capability-edges.yml
+    name: Chase Business Capability Map
   - type: AgenticAccess
     url: agentic-access/chase-agentic-access.yml
   - type: DomainSecurity

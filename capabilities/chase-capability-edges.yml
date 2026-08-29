@@ -1,0 +1,35 @@
+slug: chase
+provider: Chase
+generated_by: planning/capability-mapping/scripts/classify_capabilities.py
+model: claude-opus-5
+frame:
+- Banking & Capital Markets
+min_confidence: 0.7
+capability_model:
+  source: https://github.com/vincentmakes/turbo-ea-capabilities
+  license: CC-BY-4.0
+  attribution: Turbo EA Capabilities by Vincent Verdet — Turbo EA, https://github.com/vincentmakes/turbo-ea-capabilities,
+    CC BY 4.0
+  notice: NOTICE
+edge_count: 2
+edges:
+- tag: Consents
+  spec_file: chase-consents-api-openapi.yml
+  capability_id: BC-1300.40
+  capability_id_l1: BC-1300
+  capability_name: Customer Information Management
+  confidence: 0.7
+  evidence: '"Supports requesting, retrieving, updating, and revoking user consent for sharing account
+    data with authorized data recipients"'
+  reason: Manages customer consent records for data sharing — customer information/consent management
+    for banking customers rather than a purely technical auth mechanism.
+- tag: Orders
+  spec_file: chase-orders-api-openapi.yml
+  capability_id: BC-1340.70
+  capability_id_l1: BC-1340
+  capability_name: Card Transaction Processing Management
+  confidence: 0.7
+  evidence: POST /orders/{orderId}/capture  captureOrder  Capture a Pay with Points order; POST /orders/{orderId}/reverse  reverseOrder
+  reason: Create/capture/reverse semantics on tokenised-card orders is card transaction authorisation
+    and settlement processing, not consent management (title/description are inherited boilerplate). Some
+    ambiguity between payment initiation and card transaction processing.
