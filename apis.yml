@@ -148,6 +148,8 @@ apis:
   humanURL: https://developer.chase.com/products/aggregation-fdx/
   baseURL: https://api.chase.com/aggregation/fdx
   tags:
+  - Enrollment
+  tags_raw:
   - Enrollments
   properties:
   - type: OpenAPI
