@@ -1,34 +1,50 @@
 {
   "provider": "chase",
   "sources": [
-    "chase-accounts-api-openapi.yml",
-    "chase-consents-api-openapi.yml",
-    "chase-customers-api-openapi.yml",
-    "chase-enrollments-api-openapi.yml",
-    "chase-merchants-api-openapi.yml",
-    "chase-orders-api-openapi.yml",
-    "chase-refunds-api-openapi.yml",
-    "chase-rewards-balance-api-openapi.yml",
-    "chase-statements-api-openapi.yml",
-    "chase-tax-forms-api-openapi.yml",
-    "chase-transactions-api-openapi.yml"
+    "_original/chase-account-aggregation-user-consent-api-openapi.yml",
+    "_original/chase-account-and-customer-information-api-openapi.yml",
+    "_original/chase-loyalty-pay-with-points-enrollment-service-api-openapi.yml",
+    "_original/chase-loyalty-pay-with-points-order-service-api-openapi.yml",
+    "_original/chase-loyalty-pci-merchant-relationship-manager-api-openapi.yml",
+    "chase-rewards-balance-api-openapi.yml"
   ],
   "outputs": [
-    "chase-accounts-api-openapi.yml",
     "chase-consents-api-openapi.yml",
+    "chase-accounts-api-openapi.yml",
     "chase-customers-api-openapi.yml",
-    "chase-enrollments-api-openapi.yml",
-    "chase-merchants-api-openapi.yml",
-    "chase-orders-api-openapi.yml",
-    "chase-refunds-api-openapi.yml",
-    "chase-rewards-balance-api-openapi.yml",
     "chase-statements-api-openapi.yml",
     "chase-tax-forms-api-openapi.yml",
-    "chase-transactions-api-openapi.yml"
+    "chase-transactions-api-openapi.yml",
+    "chase-enrollments-api-openapi.yml",
+    "chase-orders-api-openapi.yml",
+    "chase-refunds-api-openapi.yml",
+    "chase-merchants-api-openapi.yml",
+    "chase-rewards-balance-api-openapi.yml"
   ],
   "archived": [],
   "errors": [],
-  "warnings": [],
-  "notes": [],
-  "skipped": []
+  "warnings": [
+    "chase-rewards-balance-api-openapi.yml: previously refined output kept for 1 operation(s) no archived document covers (e.g. /balances post); its other 0 operation(s) came from the archive and were dropped from it. The archive is incomplete for this provider \u2014 re-harvest to restore _original/ as the full source of truth."
+  ],
+  "notes": [
+    "sourced from openapi/_original/ (5 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "chase-account-aggregation-user-consent-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "chase-account-and-customer-information-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "chase-loyalty-pay-with-points-enrollment-service-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "chase-loyalty-pay-with-points-order-service-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "chase-loyalty-pci-merchant-relationship-manager-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "apis.yml register: already-registered"
+  ],
+  "skipped": [
+    "chase-accounts-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "chase-consents-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "chase-customers-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "chase-enrollments-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "chase-merchants-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "chase-orders-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "chase-refunds-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "chase-statements-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "chase-tax-forms-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "chase-transactions-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }

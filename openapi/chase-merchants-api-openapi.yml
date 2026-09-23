@@ -1,14 +1,14 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: Chase Account Aggregation User Consent Accounts Merchants API
-  description: Consent management API for the Chase FDX aggregation platform. Supports requesting, retrieving, updating, and revoking user consent for sharing account data with authorized data recipients.
+  title: Chase Loyalty PCI Merchant Relationship Manager Merchants…
+  description: PCI-compliant merchant management API for the Chase loyalty platform. Used to onboard merchants, update merchant profiles, and configure integration settings for Pay with Points and Rewards Balance products.
   version: '1.0'
   contact:
     name: Chase Developer Support
     url: https://developer.chase.com/support
 servers:
-- url: https://api.chase.com/aggregation/consent
-  description: Chase Consent Production
+- url: https://api.chase.com/loyalty/merchant-relationship-manager
+  description: Merchant Relationship Manager Production
 security:
 - oauth2: []
 tags:
@@ -88,12 +88,7 @@ components:
     oauth2:
       type: oauth2
       flows:
-        authorizationCode:
-          authorizationUrl: https://api.chase.com/oauth2/authorize
+        clientCredentials:
           tokenUrl: https://api.chase.com/oauth2/token
           scopes:
-            consents.write: Manage consents
-            consents.read: Read consents
-externalDocs:
-  description: Account Aggregation User Consent
-  url: https://developer.chase.com/products/aggregation-consent/
+            merchants.write: Manage merchants

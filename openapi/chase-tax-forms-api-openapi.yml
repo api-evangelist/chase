@@ -1,14 +1,14 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: Chase Account Aggregation User Consent Accounts Tax Forms API
-  description: Consent management API for the Chase FDX aggregation platform. Supports requesting, retrieving, updating, and revoking user consent for sharing account data with authorized data recipients.
-  version: '1.0'
+  title: Chase Account and Customer Information Tax Forms API
+  description: FDX-aligned API for retrieving Chase customer account information, balances, transactions, statements, and tax forms with explicit customer consent.
+  version: '5.2'
   contact:
     name: Chase Developer Support
     url: https://developer.chase.com/support
 servers:
-- url: https://api.chase.com/aggregation/consent
-  description: Chase Consent Production
+- url: https://api.chase.com/aggregation/fdx
+  description: Chase FDX Aggregation Production
 security:
 - oauth2: []
 tags:
@@ -38,8 +38,11 @@ components:
           authorizationUrl: https://api.chase.com/oauth2/authorize
           tokenUrl: https://api.chase.com/oauth2/token
           scopes:
-            consents.write: Manage consents
-            consents.read: Read consents
+            accounts.read: Read account data
+            transactions.read: Read transactions
+            statements.read: Read statements
+            tax-forms.read: Read tax forms
+            customers.read: Read customer profile
 externalDocs:
-  description: Account Aggregation User Consent
-  url: https://developer.chase.com/products/aggregation-consent/
+  description: Account and Customer Information API Guide
+  url: https://developer.chase.com/products/aggregation-fdx/guides/using-the-account-and-customer-information-api/

@@ -1,14 +1,14 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: Chase Account Aggregation User Consent Accounts Enrollments API
-  description: Consent management API for the Chase FDX aggregation platform. Supports requesting, retrieving, updating, and revoking user consent for sharing account data with authorized data recipients.
+  title: Chase Loyalty Pay with Points Enrollment Service…
+  description: Enrollment service that registers customer payment cards in the Chase Pay with Points program so points can be redeemed against future purchases.
   version: '1.0'
   contact:
     name: Chase Developer Support
     url: https://developer.chase.com/support
 servers:
-- url: https://api.chase.com/aggregation/consent
-  description: Chase Consent Production
+- url: https://api.chase.com/loyalty/pay-with-points/enrollment
+  description: Pay with Points Enrollment Production
 security:
 - oauth2: []
 tags:
@@ -73,12 +73,7 @@ components:
     oauth2:
       type: oauth2
       flows:
-        authorizationCode:
-          authorizationUrl: https://api.chase.com/oauth2/authorize
+        clientCredentials:
           tokenUrl: https://api.chase.com/oauth2/token
           scopes:
-            consents.write: Manage consents
-            consents.read: Read consents
-externalDocs:
-  description: Account Aggregation User Consent
-  url: https://developer.chase.com/products/aggregation-consent/
+            enrollments.write: Manage enrollments
