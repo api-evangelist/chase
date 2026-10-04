@@ -46,6 +46,7 @@ tags:
   - Open Banking
   - Pay with Points
   - Rewards
+  - Consumer Banking
 tags_raw:
   - Account Aggregation
   - Banking
@@ -58,6 +59,7 @@ tags_raw:
   - Pay with Points
   - Rewards
   - Financial-Services
+  - Consumer Banking
 created: '2025-02-21'
 modified: '2026-05-19'
 specificationVersion: '0.23'
