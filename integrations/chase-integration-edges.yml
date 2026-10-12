@@ -1,5 +1,5 @@
 generated: '2026-10-12'
-method: none
+method: searched
 source:
 - https://zapier.com/apps/chase/integrations
 - https://n8n.io/integrations/chase/
@@ -12,5 +12,20 @@ checked:
 - https://zapier.com/apps/chase/integrations
 summary: null
 marketplace_apps: []
-edges: []
+edges:
+- partner_name: justt
+  partner: justt
+  partner_match: domain
+  type: contract
+  channel: partner-built
+  relationship: processor-connection
+  direction: partner-built
+  evidence: https://github.com/api-evangelist/justt/blob/main/openapi/justt-sandbox-api-openapi.yml
+  contract_reference:
+    repo: justt
+    spec_file: justt-sandbox-api-openapi.yml
+    value: chase
+    property: components.schemas.PSP
+    detected_by: detect-payment-method-edges.py
+    detected: '2026-10-12'
 templates: []
