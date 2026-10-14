@@ -9,6 +9,7 @@ checked:
 - https://composio.dev/toolkits/chase
 - https://monid.ai/tools/chase
 - https://n8n.io/integrations/chase/
+- https://registry.financialdataexchange.org/
 - https://zapier.com/apps/chase/integrations
 summary: null
 marketplace_apps: []
@@ -28,4 +29,29 @@ edges:
     property: components.schemas.PSP
     detected_by: detect-payment-method-edges.py
     detected: '2026-10-12'
+- partner_name: FDX (Financial Data Exchange)
+  partner: fdx
+  type: contract
+  channel: standard-directory
+  relationship: standard-participant
+  direction: partner-built
+  evidence: https://registry.financialdataexchange.org/
+  contract_reference:
+    register: FDX Registry
+    standard: FDX API
+    spec_file: null
+    register_api: https://registry.financialdataexchange.org/fdxregistryapi/organizations/search/listingTags
+    role: data-provider
+    member_type: MEMBER
+    registered_name: JPM Chase
+    register_id: 126
+    registered_website: https://www.chase.com
+    country: United States
+    fdx_version:
+    - '4.6'
+    matched_by: domain:chase.com
+    detected_by: sweep-fdx.py
+    detected: '2026-10-14'
+  detected_by: sweep-fdx.py
+  first_seen: '2026-10-14'
 templates: []
